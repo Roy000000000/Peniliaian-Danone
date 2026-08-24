@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cyber Security Showcasing — Penilaian Juri · Telkomsel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#E0001B;--red-dark:#B00016;--ink:#0d1424;--slate:#475067;--muted:#7b8499;
+    --line:#e4e7ee;--bg:#eef0f5;--card:#ffffff;--soft:#f6f7fa;
+    --excellent:#0c8f5a;--verygood:#3a8a2e;--good:#a07a00;--fair:#c4661a;--poor:#c01d1d;
+    --shadow:0 1px 2px rgba(13,20,36,.06),0 8px 24px rgba(13,20,36,.06);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{font-family:'IBM Plex Sans',system-ui,sans-serif;color:var(--ink);
+    background:radial-gradient(1200px 400px at 100% -10%, rgba(224,0,27,.07), transparent 60%),
+      radial-gradient(900px 360px at -10% 0%, rgba(13,20,36,.06), transparent 55%),var(--bg);
+    line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
+  .wrap{max-width:980px;margin:0 auto;padding:24px 18px 80px}
+
+  header.masthead{background:linear-gradient(120deg,#0d1424 0%, #15203a 55%, #1d1322 100%);
+    color:#fff;border-radius:18px;overflow:hidden;position:relative;box-shadow:var(--shadow)}
+  header.masthead::before{content:"";position:absolute;inset:0;
+    background:repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 2px, transparent 2px 22px);pointer-events:none}
+  .mast-inner{padding:26px 30px;position:relative;z-index:1}
+  .kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase;
+    color:#ff8a96;margin:0 0 10px;display:flex;align-items:center;gap:10px}
+  .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(224,0,27,.25)}
+  header.masthead h1{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(22px,3.4vw,30px);margin:0 0 6px;letter-spacing:-.01em}
+  header.masthead p{margin:0;color:#b8c0d4;font-size:13.5px;max-width:62ch}
+  .gear{position:absolute;top:18px;right:20px;z-index:2;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+    color:#fff;border-radius:9px;padding:8px 12px;font-size:12.5px;cursor:pointer;font-family:inherit}
+  .gear:hover{background:rgba(255,255,255,.2)}
+
+  /* tabs */
+  .tabs{display:flex;gap:8px;margin-top:18px;background:var(--card);border:1px solid var(--line);
+    border-radius:13px;padding:6px;box-shadow:var(--shadow)}
+  .tab{flex:1;text-align:center;padding:12px;border-radius:9px;font-weight:600;font-size:14px;cursor:pointer;
+    color:var(--slate);border:none;background:transparent;font-family:inherit;transition:.15s}
+  .tab.active{background:var(--ink);color:#fff}
+  .tab .badge{font-family:'IBM Plex Mono',monospace;font-size:11px;background:var(--red);color:#fff;border-radius:20px;padding:1px 7px;margin-left:6px}
+
+  /* setup banner */
+  .setup{margin-top:16px;border:1.5px dashed var(--red);background:#fff;border-radius:14px;padding:18px 20px}
+  .setup h3{font-family:'Sora',sans-serif;margin:0 0 6px;font-size:15px}
+  .setup p{margin:0 0 12px;font-size:13px;color:var(--slate)}
+  .setup .row{display:flex;gap:10px;flex-wrap:wrap}
+  .setup input{flex:1;min-width:240px}
+
+  section.card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);margin-top:18px;overflow:hidden}
+  .card-head{padding:17px 22px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}
+  .card-head .num{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;color:#fff;background:var(--ink);
+    width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:none}
+  .card-head h2{font-family:'Sora',sans-serif;font-size:16px;font-weight:700;margin:0;letter-spacing:-.01em}
+  .card-head .sub{font-size:12.5px;color:var(--muted);margin:2px 0 0}
+  .card-body{padding:20px 22px}
+
+  label.fld{display:block;margin-bottom:16px}
+  label.fld:last-child{margin-bottom:0}
+  .lab{font-size:12.5px;font-weight:600;color:var(--slate);margin-bottom:6px;display:flex;gap:6px;align-items:center}
+  .req{color:var(--red);font-weight:700}
+  input[type=text],input[type=url],input[type=number],select,textarea{width:100%;font-family:inherit;font-size:14.5px;color:var(--ink);
+    border:1.5px solid var(--line);border-radius:10px;padding:11px 13px;background:#fff;transition:border-color .15s, box-shadow .15s}
+  textarea{resize:vertical;min-height:84px}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(224,0,27,.12)}
+  .invalid{border-color:var(--red)!important;box-shadow:0 0 0 3px rgba(224,0,27,.14)!important}
+  .err-msg{color:var(--red);font-size:12px;margin-top:5px;display:none}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+
+  .members{margin-top:4px}
+  .members .coach{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--slate);background:var(--soft);
+    border:1px dashed var(--line);border-radius:9px;padding:9px 12px;margin-bottom:12px;display:inline-flex;gap:8px;align-items:center}
+  .members .coach b{color:var(--ink)}
+  .placeholder{color:var(--muted);font-size:13.5px;font-style:italic}
+
+  details.rubric{border:1px solid var(--line);border-radius:12px;background:var(--soft)}
+  details.rubric summary{cursor:pointer;padding:13px 16px;font-weight:600;font-size:13.5px;color:var(--slate);
+    list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details.rubric summary::-webkit-details-marker{display:none}
+  .rubric-body{padding:4px 16px 16px}
+  .crit-row{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--line);align-items:flex-start}
+  .crit-row .w{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:var(--red);flex:none;width:40px}
+  .crit-row .txt{font-size:13px;color:var(--ink)}
+  .crit-row .cat{font-size:11px;color:var(--muted);font-family:'IBM Plex Mono',monospace;margin-top:2px}
+  .bands{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .band-pill{font-size:11.5px;font-family:'IBM Plex Mono',monospace;border-radius:7px;padding:5px 9px;border:1px solid}
+  .b-ex{color:var(--excellent);border-color:var(--excellent);background:rgba(12,143,90,.07)}
+  .b-vg{color:var(--verygood);border-color:var(--verygood);background:rgba(58,138,46,.07)}
+  .b-gd{color:var(--good);border-color:var(--good);background:rgba(160,122,0,.08)}
+  .b-fr{color:var(--fair);border-color:var(--fair);background:rgba(196,102,26,.08)}
+  .b-pr{color:var(--poor);border-color:var(--poor);background:rgba(192,29,29,.07)}
+
+  .pcard{border:1px solid var(--line);border-radius:14px;margin-bottom:16px;overflow:hidden;background:#fff}
+  .pcard:last-child{margin-bottom:0}
+  .pcard-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;
+    background:linear-gradient(90deg,#fbfbfd,#f4f5f9);border-bottom:1px solid var(--line)}
+  .pcard-head .who{display:flex;align-items:center;gap:11px;min-width:0}
+  .pcard-head .idx{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;color:#fff;background:var(--red);
+    width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none}
+  .pcard-head .name{font-family:'Sora',sans-serif;font-weight:600;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .scorebadge{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;border-radius:8px;padding:6px 11px;
+    border:1px solid var(--line);color:var(--muted);background:#fff;flex:none;white-space:nowrap}
+  .pcard-body{padding:16px}
+  .ci{display:grid;grid-template-columns:1fr 96px;gap:12px;align-items:center;margin-bottom:10px}
+  .ci .ci-label{font-size:12.5px;color:var(--slate)}
+  .ci .ci-label small{display:block;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:10.5px;margin-top:1px}
+  .ci input{text-align:center;font-family:'IBM Plex Mono',monospace;font-weight:600;padding:9px}
+  .pcomment{margin-top:6px}
+
+  .proj-row{display:grid;grid-template-columns:1fr 96px;gap:12px;align-items:center;padding:11px 0;border-top:1px solid var(--line)}
+  .proj-row:first-of-type{border-top:none}
+  .proj-row .pr-txt{font-size:13px;color:var(--ink)}
+  .proj-row input{text-align:center;font-family:'IBM Plex Mono',monospace;font-weight:600;padding:9px}
+  .summary-strip{margin-top:16px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
+    background:var(--soft);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .summary-strip .lbl{font-size:12px;color:var(--muted);font-family:'IBM Plex Mono',monospace}
+  .summary-strip .val{font-family:'Sora',sans-serif;font-weight:700;font-size:20px}
+
+  .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+  button.act{font-family:inherit;cursor:pointer;border:none;border-radius:11px;font-weight:600;font-size:14px;transition:transform .08s, box-shadow .15s, background .15s}
+  button.act:active{transform:translateY(1px)}
+  .btn-primary{background:var(--red);color:#fff;padding:14px 24px;box-shadow:0 6px 18px rgba(224,0,27,.28);flex:1;min-width:200px}
+  .btn-primary:hover{background:var(--red-dark)}
+  .btn-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);padding:14px 20px}
+  .btn-ghost:hover{border-color:var(--slate)}
+  button:disabled{cursor:not-allowed;opacity:.5;box-shadow:none}
+  .formnote{font-size:12.5px;color:var(--muted);margin-top:14px;text-align:center}
+
+  /* status */
+  .status{margin-top:16px;border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:var(--soft);font-size:13px;color:var(--slate)}
+  .status b{color:var(--ink)}
+  .pending-item{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);
+    border-radius:9px;padding:9px 12px;margin-top:8px;font-size:12.5px}
+
+  /* dashboard */
+  .dash-controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:18px}
+  .dash-controls .left{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .live-dot{width:9px;height:9px;border-radius:50%;background:var(--excellent);box-shadow:0 0 0 4px rgba(12,143,90,.18);display:inline-block}
+  .live-dot.off{background:var(--muted);box-shadow:0 0 0 4px rgba(123,132,153,.15)}
+  .updated{font-size:12px;color:var(--muted);font-family:'IBM Plex Mono',monospace}
+  .switch{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--slate);cursor:pointer}
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-top:16px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow)}
+  .stat .n{font-family:'Sora',sans-serif;font-weight:800;font-size:28px;line-height:1}
+  .stat .l{font-size:12px;color:var(--muted);margin-top:6px;font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.06em}
+  .gtable{width:100%;border-collapse:collapse;font-size:13px;margin-top:4px}
+  .gtable th,.gtable td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+  .gtable th{font-size:11px;color:var(--muted);font-family:'IBM Plex Mono',monospace;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+  .gtable td.num,.gtable th.num{text-align:center;font-family:'IBM Plex Mono',monospace}
+  .gtable tr:last-child td{border-bottom:none}
+  .bandtag{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;border-radius:6px;padding:2px 7px;border:1px solid}
+  .judge-chip{display:inline-block;font-size:11px;font-family:'IBM Plex Mono',monospace;background:var(--soft);border:1px solid var(--line);
+    border-radius:20px;padding:3px 9px;margin:2px 4px 2px 0;color:var(--slate)}
+  .rank{font-family:'Sora',sans-serif;font-weight:800;color:var(--red)}
+
+  .toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(120%);background:var(--ink);color:#fff;
+    padding:14px 22px;border-radius:12px;font-size:14px;box-shadow:0 12px 30px rgba(0,0,0,.3);
+    transition:transform .35s cubic-bezier(.2,.9,.3,1.2);z-index:50;max-width:90vw}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+  .toast.bad{background:var(--poor)}
+  .hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <button class="gear" id="gearBtn">⚙ Pengaturan</button>
+    <div class="mast-inner">
+      <p class="kicker"><span class="dot"></span> Danone · Showcasing Horizontal</p>
+      <h1>Penilaian Juri — Multi-Juri &amp; Live</h1>
+      <p>Tiap juri mengisi penilaian dari perangkat masing-masing. Semua hasil otomatis tergabung di satu pusat dan tampil real-time di tab Dashboard.</p>
+    </div>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" id="tabForm">📝 Form Penilaian</button>
+    <button class="tab" id="tabDash">📊 Dashboard Live <span class="badge" id="dashBadge">0</span></button>
+  </div>
+
+  <!-- setup banner -->
+  <div class="setup hidden" id="setupBanner">
+    <h3>⚙ Hubungkan ke pusat (Google Sheet)</h3>
+    <p>Tempel <b>Web App URL</b> dari Google Apps Script Anda. Cukup sekali per perangkat (atau tanam di file sebelum dibagikan ke juri).</p>
+    <div class="row">
+      <input type="url" id="urlInput" placeholder="https://script.google.com/macros/s/..../exec" />
+      <button class="act btn-primary" style="flex:none;min-width:120px" id="saveUrlBtn">Simpan</button>
+    </div>
+    <p style="margin-top:10px;font-size:12px" id="urlState"></p>
+  </div>
+
+  <!-- ============ FORM VIEW ============ -->
+  <div id="formView">
+    <section class="card">
+      <div class="card-head"><span class="num">1</span><div><h2>Juri &amp; Kelompok</h2><p class="sub">Identitas juri dan kelompok yang dinilai.</p></div></div>
+      <div class="card-body">
+        <div class="grid2">
+          <label class="fld">
+            <span class="lab">Nama Juri / Panelist <span class="req">*</span></span>
+            <input type="text" id="panelistName" placeholder="Nama lengkap Anda" autocomplete="name" />
+            <span class="err-msg" id="err-panelistName">Nama juri wajib diisi.</span>
+          </label>
+          <label class="fld">
+            <span class="lab">Kelompok <span class="req">*</span></span>
+            <select id="groupSelect">
+              <option value="">— Pilih kelompok —</option>
+              <option value="1">Group 1</option><option value="2">Group 2</option>
+              <option value="3">Group 3</option><option value="4">Group 4</option><option value="5">Group 5</option>
+            </select>
+            <span class="err-msg" id="err-groupSelect">Pilih kelompok terlebih dahulu.</span>
+          </label>
+        </div>
+        <div class="lab" style="margin-top:4px">Anggota Kelompok</div>
+        <div class="members" id="memberBox"><span class="placeholder">Pilih kelompok untuk memuat coach &amp; anggota otomatis.</span></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><span class="num">2</span><div><h2>Penilaian Individu</h2><p class="sub">Nilai tiap anggota 10–100 pada setiap kriteria. Skor terbobot &amp; band dihitung otomatis.</p></div></div>
+      <div class="card-body">
+        <details class="rubric"><summary>Rubrik &amp; rentang nilai <span>▾</span></summary><div class="rubric-body" id="rubricBody"></div></details>
+        <div id="participantArea" style="margin-top:18px"><p class="placeholder">Pilih kelompok untuk memuat peserta.</p></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><span class="num">3</span><div><h2>Project's Criteria — Innovation &amp; Completeness</h2><p class="sub">Nilai solusi kelompok 10–100 per kriteria.</p></div></div>
+      <div class="card-body" id="projectArea"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head"><span class="num">4</span><div><h2>Overall Remarks</h2><p class="sub">Catatan keseluruhan untuk kelompok.</p></div></div>
+      <div class="card-body">
+        <label class="fld"><span class="lab">Remarks <span class="req">*</span></span>
+          <textarea id="overallRemarks" placeholder="Observasi keseluruhan, kelebihan, dan area perbaikan…"></textarea>
+          <span class="err-msg" id="err-overallRemarks">Overall remarks wajib diisi.</span>
+        </label>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button class="act btn-primary" id="submitBtn">✓ Kirim Penilaian ke Pusat</button>
+      <button class="act btn-ghost" id="resetBtn">Kosongkan Form</button>
+    </div>
+    <p class="formnote">Field wajib ditandai <span class="req">*</span>; skor harus 10–100. Setelah terkirim, hasil langsung muncul di Dashboard Live untuk semua juri.</p>
+
+    <div class="status" id="statusBox">
+      <div>Terkirim sesi ini: <b id="sentCount">0</b> · Tertunda: <b id="pendCount">0</b></div>
+      <div id="pendingList"></div>
+    </div>
+  </div>
+
+  <!-- ============ DASHBOARD VIEW ============ -->
+  <div id="dashboardView" class="hidden">
+    <div class="dash-controls">
+      <div class="left">
+        <span><span class="live-dot" id="liveDot"></span> <b style="font-family:'Sora'">Live</b></span>
+        <label class="switch"><input type="checkbox" id="autoToggle" checked /> Auto-refresh (8 dtk)</label>
+        <span class="updated" id="updatedAt">Belum dimuat</span>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button class="act btn-ghost" id="refreshBtn">↻ Refresh</button>
+        <button class="act btn-primary" style="min-width:auto;flex:none" id="dashExportBtn">⬇ Download Rekap (Excel)</button>
+      </div>
+    </div>
+
+    <div class="stats" id="statCards"></div>
+    <div id="dashGroups"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   ISI URL APPS SCRIPT DI SINI (1 baris) — agar juri tinggal buka.
+   Tempel URL Web App di antara tanda kutip, lalu simpan & bagikan file ini.
+   ========================================================= */
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzXb2lO94k-bq3wpv8RJ_VtbqhXh7E_1aHtKrrtBQYtto6fpKGmxi8VIs3g3HerpM8/exec";
+/* ========================================================= */
+
+function getUrl(){ if(WEB_APP_URL) return WEB_APP_URL; try{ return localStorage.getItem('tsel_webapp_url')||""; }catch(e){ return ""; } }
+function setUrl(u){ try{ localStorage.setItem('tsel_webapp_url', u); }catch(e){} }
+
+/* ---------------- DATA ---------------- */
+const GROUPS = {
+  "1": { coach:"Pak Hotma", project:"OBBPPC Dashboard", members:["Gunawan Wibisono S","Hendri Adi Nugroho","Anita Suryani"] },
+  "2": { coach:"Pak Hendra", project:"FEFO & Freshness Management", members:["Agung Prihatmoko","Erlin Marulia"] },
+  "3": { coach:"Pak Agus", project:"Unified HCP Data Foundation for Omnichannel HCP Journey", members:["Kalis Kinanti","Nurman Amien Jusuf","Nisa Assyifa"] },
+  "4": { coach:"Pak Agus", project:"Water Incentive", members:["Jim Wibowo","Muhamad Maulana Yasin","Muhammad Lutfi","Alan Dinasty","Nisa Assyifa"] },
+  "5": { coach:"Pak Hotma", project:"Water Master Data Management", members:["Hasna Putri Rahmatunissa","Indra Lukas Tjahaja"] }
+};
+
+const CRITERIA = [
+  { t:"Understanding of the project and its objectives", w:0.2, cat:"Project Understanding" },
+  { t:"Understanding of the participant's role and contribution", w:0.2, cat:"Individual Contribution" },
+  { t:"Ability to explain ideas clearly and systematically", w:0.2, cat:"Communication" },
+  { t:"Problem-solving ability and response to questions", w:0.2, cat:"Problem Solving" },
+  { t:"Knowledge, teamwork, and ownership of the project", w:0.2, cat:"Collaboration & Ownership" }
+];
+
+const PROJECT_CRITERIA = [
+  "The solution provided is applicable for the organization's requirements",
+  "The solution is a new innovation that will give good impact to the organization",
+  "The solutions are useful for the organization",
+  "The solution complies with Telkomsel organization regulations",
+  "The solution complies with government regulations"
+];
+const BANDS = [
+  { name:"Excellent", min:90, color:"var(--excellent)" },{ name:"Very Good", min:80, color:"var(--verygood)" },
+  { name:"Good", min:70, color:"var(--good)" },{ name:"Fair", min:61, color:"var(--fair)" },{ name:"Poor", min:0, color:"var(--poor)" }
+];
+function bandFor(s){ if(s===null||isNaN(s)) return null; for(const b of BANDS){ if(s>=b.min) return b; } return BANDS[BANDS.length-1]; }
+function bandClass(n){ return {Excellent:'b-ex','Very Good':'b-vg',Good:'b-gd',Fair:'b-fr',Poor:'b-pr'}[n]||'b-pr'; }
+
+/* ---------------- RENDER RUBRIC ---------------- */
+(function(){
+  const el=document.getElementById('rubricBody');
+  let h='<p style="font-size:12.5px;color:var(--slate);margin:8px 0 4px">Tiap kriteria berbobot sama (0.2). Skor akhir individu = jumlah terbobot kelimanya.</p>';
+  CRITERIA.forEach((c,i)=>h+=`<div class="crit-row"><span class="w">${c.w.toFixed(1)}</span><div><div class="txt">${i+1}. ${esc(c.t)}</div><div class="cat">${esc(c.cat)}</div></div></div>`);
+  h+='<div class="bands"><span class="band-pill b-ex">Excellent · 90–100</span><span class="band-pill b-vg">Very Good · 80–89</span><span class="band-pill b-gd">Good · 70–79</span><span class="band-pill b-fr">Fair · 61–69</span><span class="band-pill b-pr">Poor · &lt;60</span></div>';
+  el.innerHTML=h;
+})();
+
+/* ---------------- RENDER PROJECT ---------------- */
+(function(){
+  const el=document.getElementById('projectArea'); let h='';
+  PROJECT_CRITERIA.forEach((t,i)=>h+=`<div class="proj-row"><div class="pr-txt">${i+1}. ${esc(t)}</div><input type="number" min="10" max="100" inputmode="numeric" class="proj-input" data-i="${i}" placeholder="10–100" /></div>`);
+  h+=`<div class="summary-strip"><span class="lbl">Innovation &amp; Completeness (avg)</span><span class="val" id="projAvg">—</span></div>`;
+  el.innerHTML=h;
+  el.querySelectorAll('.proj-input').forEach(inp=>inp.addEventListener('input',()=>{clampInput(inp);updateProjAvg();}));
+})();
+function updateProjAvg(){
+  const vals=[...document.querySelectorAll('.proj-input')].map(i=>parseFloat(i.value)).filter(v=>!isNaN(v));
+  const out=document.getElementById('projAvg');
+  if(vals.length===PROJECT_CRITERIA.length){const avg=vals.reduce((a,b)=>a+b,0)/vals.length;const b=bandFor(avg);out.textContent=`${avg.toFixed(1)} · ${b.name}`;out.style.color=b.color;}
+  else{out.textContent='—';out.style.color='var(--ink)';}
+}
+
+/* ---------------- GROUP CHANGE ---------------- */
+const groupSelect=document.getElementById('groupSelect');
+groupSelect.addEventListener('change',()=>{
+  const g=groupSelect.value, memberBox=document.getElementById('memberBox'), pArea=document.getElementById('participantArea');
+  if(!g){memberBox.innerHTML='<span class="placeholder">Pilih kelompok untuk memuat coach &amp; anggota otomatis.</span>';pArea.innerHTML='<p class="placeholder">Pilih kelompok untuk memuat peserta.</p>';return;}
+  const data=GROUPS[g];
+  memberBox.innerHTML=`<div class="coach">👤 Coach: <b>${esc(data.coach)}</b></div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px">`
+    +data.members.map((m,i)=>`<div style="font-size:13px;background:var(--soft);border:1px solid var(--line);border-radius:9px;padding:8px 11px"><b style="color:var(--red);font-family:'IBM Plex Mono',monospace">${i+1}.</b> ${esc(m)}</div>`).join('')+`</div>`;
+  renderParticipants(data.members);
+});
+function renderParticipants(members){
+  const area=document.getElementById('participantArea'); let h='';
+  members.forEach((name,pi)=>{
+    h+=`<div class="pcard"><div class="pcard-head"><div class="who"><span class="idx">${pi+1}</span><span class="name">${esc(name)}</span></div><span class="scorebadge" id="badge-${pi}">— / 100</span></div><div class="pcard-body">`;
+    CRITERIA.forEach((c,ci)=>h+=`<div class="ci"><div class="ci-label">${ci+1}. ${esc(c.t)}<small>${esc(c.cat)} · w ${c.w.toFixed(1)}</small></div><input type="number" min="10" max="100" inputmode="numeric" class="crit-input" data-p="${pi}" data-c="${ci}" placeholder="10–100" /></div>`);
+    h+=`<div class="pcomment"><label class="fld" style="margin:0"><span class="lab">Comment <span class="req">*</span></span><textarea class="comment-input" data-p="${pi}" placeholder="Komentar untuk ${esc(name)}…" style="min-height:60px"></textarea></label></div></div></div>`;
+  });
+  area.innerHTML=h;
+  area.querySelectorAll('.crit-input').forEach(inp=>inp.addEventListener('input',()=>{clampInput(inp);updateParticipantScore(inp.dataset.p);}));
+}
+function updateParticipantScore(pi){
+  const inputs=[...document.querySelectorAll(`.crit-input[data-p="${pi}"]`)], vals=inputs.map(i=>parseFloat(i.value)), badge=document.getElementById('badge-'+pi);
+  if(vals.every(v=>!isNaN(v))){let t=0;vals.forEach((v,ci)=>t+=v*CRITERIA[ci].w);const b=bandFor(t);badge.textContent=`${t.toFixed(1)} / 100 · ${b.name}`;badge.style.color=b.color;badge.style.borderColor=b.color;}
+  else{badge.textContent='— / 100';badge.style.color='var(--muted)';badge.style.borderColor='var(--line)';}
+}
+function clampInput(inp){if(inp.value==='')return;let v=parseFloat(inp.value);if(isNaN(v))return;if(v>100)inp.value=100;if(v<0)inp.value=0;}
+
+/* ---------------- COLLECT + VALIDATE ---------------- */
+function collect(){
+  const name=document.getElementById('panelistName').value.trim(), g=groupSelect.value, remarks=document.getElementById('overallRemarks').value.trim(), errors=[];
+  setErr('panelistName',!name); setErr('groupSelect',!g); setErr('overallRemarks',!remarks);
+  if(!name)errors.push("Nama juri"); if(!g)errors.push("Kelompok");
+  let participants=[], firstBad=null;
+  if(g){GROUPS[g].members.forEach((m,pi)=>{
+    const scores=CRITERIA.map((c,ci)=>{const inp=document.querySelector(`.crit-input[data-p="${pi}"][data-c="${ci}"]`);const v=parseFloat(inp.value);const bad=isNaN(v)||v<10||v>100;inp.classList.toggle('invalid',bad);if(bad&&!firstBad)firstBad=inp;return bad?null:v;});
+    const cInp=document.querySelector(`.comment-input[data-p="${pi}"]`), comment=cInp.value.trim(), cbad=!comment;
+    cInp.classList.toggle('invalid',cbad); if(cbad&&!firstBad)firstBad=cInp;
+    if(!(scores.every(s=>s!==null)&&!cbad))errors.push(`Skor/komentar "${m}"`);
+    let total=null,band=null; if(scores.every(s=>s!==null)){total=0;scores.forEach((s,ci)=>total+=s*CRITERIA[ci].w);total=Number(total.toFixed(1));band=bandFor(total).name;}
+    participants.push({no:pi+1,name:m,scores,total,band,comment});
+  });}
+  const projScores=PROJECT_CRITERIA.map((t,i)=>{const inp=document.querySelector(`.proj-input[data-i="${i}"]`);const v=parseFloat(inp.value);const bad=isNaN(v)||v<10||v>100;inp.classList.toggle('invalid',bad);if(bad&&!firstBad)firstBad=inp;if(bad)errors.push(`Project ${i+1}`);return bad?null:v;});
+  const projValid=projScores.every(s=>s!==null), projAvg=projValid?Number((projScores.reduce((a,b)=>a+b,0)/projScores.length).toFixed(1)):null;
+  if(!remarks)errors.push("Overall remarks");
+  return {valid:errors.length===0,errors,firstBad,data:{
+    submissionId:uuid(), panelist:name, group:g, coach:g?GROUPS[g].coach:'',
+    participants, project:{scores:projScores,avg:projAvg,band:projAvg!==null?bandFor(projAvg).name:null},
+    remarks, clientTime:new Date().toISOString()
+  }};
+}
+function setErr(id,show){const f=document.getElementById(id);if(f)f.classList.toggle('invalid',show);const e=document.getElementById('err-'+id);if(e)e.style.display=show?'block':'none';}
+function uuid(){ try{ if(crypto.randomUUID) return crypto.randomUUID(); }catch(e){} return 'id-'+Date.now()+'-'+Math.random().toString(16).slice(2); }
+
+/* ---------------- SUBMIT (online) ---------------- */
+let SENT=0;
+function getPending(){ try{ return JSON.parse(localStorage.getItem('tsel_pending')||'[]'); }catch(e){ return []; } }
+function setPending(a){ try{ localStorage.setItem('tsel_pending', JSON.stringify(a)); }catch(e){} renderPending(); }
+function renderPending(){
+  const p=getPending(); document.getElementById('pendCount').textContent=p.length; document.getElementById('sentCount').textContent=SENT;
+  const list=document.getElementById('pendingList');
+  if(p.length===0){ list.innerHTML=''; return; }
+  list.innerHTML='<div style="margin-top:10px;font-size:12px;color:var(--poor)"><b>Belum terkirim</b> (akan dikirim ulang otomatis, atau klik kirim ulang):</div>'
+    + p.map((e,i)=>`<div class="pending-item"><span>${esc(e.panelist)} · Group ${esc(e.group)} · ${e.participants.length} peserta</span><button class="act btn-ghost" style="padding:6px 12px;font-size:12px" data-retry="${i}">Kirim ulang</button></div>`).join('');
+  list.querySelectorAll('[data-retry]').forEach(b=>b.addEventListener('click',()=>flushPending(true)));
+}
+
+async function postPayload(payload){
+  const url=getUrl(); if(!url) throw new Error('no-url');
+  // body as plain string -> tanpa preflight CORS
+  const res=await fetch(url,{method:'POST',body:JSON.stringify(payload),redirect:'follow'});
+  let j=null; try{ j=await res.json(); }catch(e){}
+  if(j && j.ok===false) throw new Error(j.error||'server-error');
+  return true; // anggap sukses bila tidak ada error eksplisit
+}
+async function flushPending(manual){
+  const url=getUrl(); if(!url) return;
+  let p=getPending(); if(p.length===0){ if(manual) showToast('Tidak ada yang tertunda.'); return; }
+  const remain=[];
+  for(const item of p){ try{ await postPayload(item); SENT++; }catch(e){ remain.push(item); } }
+  setPending(remain);
+  if(remain.length===0) showToast('Semua data tertunda berhasil dikirim ✓');
+  else if(manual) showToast('Sebagian masih gagal — cek koneksi.', true);
+}
+
+document.getElementById('submitBtn').addEventListener('click', async ()=>{
+  if(!getUrl()){ openSetup('Tempel Web App URL dulu agar penilaian bisa terkirim ke pusat.'); return; }
+  const res=collect();
+  if(!res.valid){
+    if(res.firstBad){res.firstBad.scrollIntoView({behavior:'smooth',block:'center'});res.firstBad.focus({preventScroll:true});}
+    showToast('Lengkapi dulu: '+res.errors.slice(0,3).join(', ')+(res.errors.length>3?` (+${res.errors.length-3} lagi)`:''),true);
+    return;
+  }
+  const btn=document.getElementById('submitBtn'); btn.disabled=true; const old=btn.textContent; btn.textContent='Mengirim…';
+  try{
+    await postPayload(res.data); SENT++; renderPending();
+    showToast(`Terkirim ke pusat ✓ (${res.data.panelist} · Group ${res.data.group})`);
+    clearForm();
+  }catch(err){
+    const p=getPending(); p.push(res.data); setPending(p);
+    showToast('Gagal kirim (koneksi?) — disimpan & akan dikirim ulang otomatis.', true);
+  }finally{ btn.disabled=false; btn.textContent=old; }
+});
+
+function clearForm(){
+  document.querySelectorAll('#panelistName,#overallRemarks,.crit-input,.proj-input,.comment-input').forEach(el=>{el.value='';el.classList.remove('invalid');});
+  groupSelect.value=''; groupSelect.dispatchEvent(new Event('change'));
+  document.querySelectorAll('.err-msg').forEach(e=>e.style.display='none');
+  document.getElementById('projAvg').textContent='—';
+}
+document.getElementById('resetBtn').addEventListener('click',()=>{ if(!confirm('Kosongkan form?'))return; clearForm(); window.scrollTo({top:0,behavior:'smooth'}); });
+['panelistName','overallRemarks'].forEach(id=>document.getElementById(id).addEventListener('input',()=>setErr(id,false)));
+groupSelect.addEventListener('change',()=>setErr('groupSelect',!groupSelect.value));
+
+/* ---------------- TABS ---------------- */
+const formView=document.getElementById('formView'), dashView=document.getElementById('dashboardView');
+const tabForm=document.getElementById('tabForm'), tabDash=document.getElementById('tabDash');
+tabForm.addEventListener('click',()=>{tabForm.classList.add('active');tabDash.classList.remove('active');formView.classList.remove('hidden');dashView.classList.add('hidden');});
+tabDash.addEventListener('click',()=>{tabDash.classList.add('active');tabForm.classList.remove('active');dashView.classList.remove('hidden');formView.classList.add('hidden');refreshDashboard();});
+
+/* ---------------- SETTINGS ---------------- */
+const setupBanner=document.getElementById('setupBanner');
+document.getElementById('gearBtn').addEventListener('click',()=>openSetup());
+function openSetup(msg){
+  setupBanner.classList.remove('hidden');
+  document.getElementById('urlInput').value=getUrl();
+  document.getElementById('urlState').textContent=msg|| (getUrl()?('Terhubung: '+getUrl()):'Belum terhubung.');
+  setupBanner.scrollIntoView({behavior:'smooth',block:'center'});
+}
+document.getElementById('saveUrlBtn').addEventListener('click',()=>{
+  const v=document.getElementById('urlInput').value.trim();
+  if(!/^https:\/\/script\.google\.com\/macros\/s\//.test(v)){ showToast('URL tidak valid. Harus diawali https://script.google.com/macros/s/...',true); return; }
+  setUrl(v); showToast('Tersambung ke pusat ✓'); document.getElementById('urlState').textContent='Terhubung: '+v;
+  flushPending(false); refreshDashboard();
+});
+
+/* ---------------- DASHBOARD ---------------- */
+let DASH_DATA=[]; let autoTimer=null;
+document.getElementById('refreshBtn').addEventListener('click',()=>refreshDashboard());
+document.getElementById('autoToggle').addEventListener('change',e=>{ setAuto(e.target.checked); });
+function setAuto(on){
+  const dot=document.getElementById('liveDot');
+  if(autoTimer){clearInterval(autoTimer);autoTimer=null;}
+  if(on){ dot.classList.remove('off'); autoTimer=setInterval(()=>{ if(!dashView.classList.contains('hidden')) refreshDashboard(); }, 8000); }
+  else dot.classList.add('off');
+}
+async function refreshDashboard(){
+  const url=getUrl();
+  if(!url){ document.getElementById('dashGroups').innerHTML='<section class="card"><div class="card-body"><p class="placeholder">Belum terhubung ke pusat. Klik ⚙ Pengaturan dan tempel Web App URL.</p></div></section>'; document.getElementById('statCards').innerHTML=''; return; }
+  try{
+    const res=await fetch(url+'?action=list&t='+Date.now(),{redirect:'follow'});
+    const j=await res.json();
+    DASH_DATA=(j&&j.submissions)?j.submissions:[];
+    renderDashboard();
+    document.getElementById('updatedAt').textContent='Diperbarui '+new Date().toLocaleTimeString();
+  }catch(err){
+    document.getElementById('updatedAt').textContent='Gagal memuat (cek koneksi/URL)';
+  }
+}
+function dedupe(subs){
+  // buang submissionId duplikat; lalu per (panelist|group) ambil clientTime terbaru
+  const byId={}; subs.forEach(s=>{ byId[s.submissionId]=s; });
+  const uniq=Object.values(byId);
+  const byKey={};
+  uniq.forEach(s=>{ const k=(s.panelist||'')+'|'+(s.group||''); const prev=byKey[k]; if(!prev || new Date(s.clientTime)>new Date(prev.clientTime)) byKey[k]=s; });
+  return Object.values(byKey);
+}
+function renderDashboard(){
+  const subs=dedupe(DASH_DATA);
+  document.getElementById('dashBadge').textContent=subs.length;
+  const judges=new Set(subs.map(s=>s.panelist));
+  const groupsScored=new Set(subs.map(s=>s.group));
+  document.getElementById('statCards').innerHTML=
+     stat(subs.length,'Penilaian masuk')
+   + stat(judges.size,'Juri aktif')
+   + stat(groupsScored.size+' / 5','Kelompok dinilai');
+
+  // aggregate per group
+  const order=Object.keys(GROUPS);
+  const cards=[]; const ranking=[];
+  order.forEach(g=>{
+    const gs=subs.filter(s=>s.group===g);
+    const data=GROUPS[g];
+    let body;
+    if(gs.length===0){ body=`<p class="placeholder">Belum ada juri menilai kelompok ini.</p>`; }
+    else{
+      // per participant: average of totals across judges
+      const partRows=data.members.map((m,pi)=>{
+        const scored=gs.map(s=>{const p=(s.participants||[]).find(x=>x.no===pi+1||x.name===m);return (p&&p.total!==null)?{judge:s.panelist,score:Number(p.total)}:null;}).filter(x=>x!==null);
+        const vals=scored.map(x=>x.score);
+        const avg=vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null;
+        const b=avg!==null?bandFor(avg):null;
+        const judgeCell=scored.length?scored.map(x=>`<span class="judge-chip">${esc(x.judge)}</span>`).join(''):'<span style="color:var(--muted)">belum dinilai</span>';
+        return `<tr><td>${esc(m)}</td><td>${judgeCell}</td><td class="num">${avg!==null?avg.toFixed(1):'—'}</td><td class="num">${b?`<span class="bandtag ${bandClass(b.name)}">${b.name}</span>`:'—'}</td></tr>`;
+      }).join('');
+      const indivAll=data.members.map((m,pi)=>{const vals=gs.map(s=>{const p=(s.participants||[]).find(x=>x.no===pi+1||x.name===m);return p&&p.total!==null?Number(p.total):null;}).filter(v=>v!==null);return vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null;}).filter(v=>v!==null);
+      const indivAvg=indivAll.length?indivAll.reduce((a,b)=>a+b,0)/indivAll.length:null;
+      const projVals=gs.map(s=>s.project&&s.project.avg!==null?Number(s.project.avg):null).filter(v=>v!==null);
+      const projAvg=projVals.length?projVals.reduce((a,b)=>a+b,0)/projVals.length:null;
+      const combined=(indivAvg!==null&&projAvg!==null)?(indivAvg+projAvg)/2:(indivAvg!==null?indivAvg:projAvg);
+      if(combined!==null) ranking.push({g,combined,indivAvg,projAvg});
+      const judgeChips=gs.map(s=>`<span class="judge-chip">${esc(s.panelist)}</span>`).join('');
+      body=`<table class="gtable"><thead><tr><th>Peserta</th><th>Juri</th><th class="num">Rata skor</th><th class="num">Band</th></tr></thead><tbody>${partRows}</tbody></table>`
+        + `<div class="summary-strip"><span><span class="lbl">Rata Individu</span><br><span class="val">${indivAvg!==null?indivAvg.toFixed(1):'—'}</span></span>`
+        + `<span><span class="lbl">Project (Innov.&Compl.)</span><br><span class="val">${projAvg!==null?projAvg.toFixed(1):'—'}</span></span>`
+        + `<span><span class="lbl">Skor Gabungan</span><br><span class="val" style="color:${combined!==null?bandFor(combined).color:'var(--ink)'}">${combined!==null?combined.toFixed(1):'—'}</span></span></div>`
+        + `<div style="margin-top:12px"><span class="lbl">Juri yang sudah menilai (${gs.length}):</span><br>${judgeChips}</div>`;
+    }
+    cards.push(`<section class="card"><div class="card-head"><span class="num" style="background:var(--red)">${g}</span><div><h2>Group ${g}</h2><p class="sub">Coach ${esc(data.coach)} · ${data.members.length} peserta</p></div></div><div class="card-body">${body}</div></section>`);
+  });
+
+  // leaderboard
+  ranking.sort((a,b)=>b.combined-a.combined);
+  let lb='';
+  if(ranking.length){
+    lb=`<section class="card"><div class="card-head"><span class="num">🏆</span><div><h2>Peringkat Sementara</h2><p class="sub">Berdasarkan skor gabungan (rata individu + project)/2.</p></div></div><div class="card-body"><table class="gtable"><thead><tr><th class="num">#</th><th>Kelompok</th><th class="num">Individu</th><th class="num">Project</th><th class="num">Gabungan</th><th class="num">Band</th></tr></thead><tbody>`
+      + ranking.map((r,i)=>{const b=bandFor(r.combined);return `<tr><td class="num rank">${i+1}</td><td>Group ${r.g} · ${esc(GROUPS[r.g].coach)}</td><td class="num">${r.indivAvg!==null?r.indivAvg.toFixed(1):'—'}</td><td class="num">${r.projAvg!==null?r.projAvg.toFixed(1):'—'}</td><td class="num"><b>${r.combined.toFixed(1)}</b></td><td class="num"><span class="bandtag ${bandClass(b.name)}">${b.name}</span></td></tr>`;}).join('')
+      + `</tbody></table></div></section>`;
+  }
+  document.getElementById('dashGroups').innerHTML=lb+cards.join('');
+}
+function stat(n,l){ return `<div class="stat"><div class="n">${n}</div><div class="l">${l}</div></div>`; }
+
+document.getElementById('dashExportBtn').addEventListener('click',()=>{
+  const subs=dedupe(DASH_DATA);
+  if(subs.length===0){ showToast('Belum ada data untuk diunduh.',true); return; }
+  const sheets=buildCombinedSheets(subs);
+  const dt=new Date(), stamp=`${dt.getFullYear()}${String(dt.getMonth()+1).padStart(2,'0')}${String(dt.getDate()).padStart(2,'0')}`;
+  download(buildXlsxMulti(sheets),`Rekap_Showcasing_CyberSecurity_${stamp}.xlsx`,'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  showToast(`Rekap ${subs.length} penilaian diunduh ✓`);
+});
+
+/* ---------------- COMBINED EXPORT ---------------- */
+function buildCombinedSheets(subs){
+  const indiv=[]; indiv.push(["Rekap Penilaian Individu — Cyber Security Showcasing (Telkomsel)"]);
+  indiv.push(["Diunduh:",new Date().toLocaleString(),"","Total penilaian:",subs.length]); indiv.push([]);
+  const head=["Panelist","Group","Coach","No","Participant"]; CRITERIA.forEach((c,i)=>head.push("C"+(i+1)+" (w"+c.w.toFixed(1)+")")); head.push("Weighted Score","Band","Comment"); indiv.push(head);
+  subs.forEach(d=>(d.participants||[]).forEach(p=>{const r=[d.panelist,"Group "+d.group,d.coach,p.no,p.name];(p.scores||[]).forEach(s=>r.push(s===null?"":s));r.push(p.total===null?"":Number(p.total),p.band||"",p.comment);indiv.push(r);}));
+  const proj=[]; proj.push(["Rekap Project Criteria & Overall Remarks"]); proj.push([]);
+  const ph=["Panelist","Group","Coach"]; PROJECT_CRITERIA.forEach((t,i)=>ph.push("P"+(i+1))); ph.push("Average (Innov. & Completeness)","Band","Overall Remarks","Waktu"); proj.push(ph);
+  subs.forEach(d=>{const r=[d.panelist,"Group "+d.group,d.coach];(d.project.scores||[]).forEach(s=>r.push(s===null?"":s));r.push(d.project.avg===null?"":Number(d.project.avg),d.project.band||"",d.remarks,d.clientTime?new Date(d.clientTime).toLocaleString():"");proj.push(r);});
+  const leg=[]; leg.push(["Keterangan Kriteria"]); leg.push([]); leg.push(["Kode","Kriteria Individu","Kategori","Bobot"]); CRITERIA.forEach((c,i)=>leg.push(["C"+(i+1),c.t,c.cat,c.w]));
+  leg.push([]); leg.push(["Kode","Project Criteria"]); PROJECT_CRITERIA.forEach((t,i)=>leg.push(["P"+(i+1),t]));
+  leg.push([]); leg.push(["Band","Rentang"]); leg.push(["Excellent","90-100"]);leg.push(["Very Good","80-89"]);leg.push(["Good","70-79"]);leg.push(["Fair","61-69"]);leg.push(["Poor","<60"]);
+  return [{name:"Rekap Individu",aoa:indiv},{name:"Project dan Remarks",aoa:proj},{name:"Keterangan",aoa:leg}];
+}
+
+/* ---------------- NATIVE XLSX (offline, multi-sheet) ---------------- */
+function colLetter(n){let s="";n++;while(n>0){let m=(n-1)%26;s=String.fromCharCode(65+m)+s;n=Math.floor((n-1)/26);}return s;}
+function xesc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function sheetXML(aoa){
+  let rows="";aoa.forEach((row,r)=>{let cells="";row.forEach((val,c)=>{if(val===null||val===undefined||val==="")return;const ref=colLetter(c)+(r+1);if(typeof val==="number"&&isFinite(val)){cells+=`<c r="${ref}" t="n"><v>${val}</v></c>`;}else{cells+=`<c r="${ref}" t="inlineStr"><is><t xml:space="preserve">${xesc(val)}</t></is></c>`;}});rows+=`<row r="${r+1}">${cells}</row>`;});
+  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><cols><col min="1" max="1" width="22"/><col min="2" max="3" width="16"/><col min="5" max="5" width="26"/><col min="13" max="13" width="40"/></cols><sheetData>${rows}</sheetData></worksheet>`;
+}
+function safeSheetName(n){return String(n).replace(/[\\\/\?\*\[\]:]/g,' ').slice(0,31);}
+function buildXlsxMulti(sheets){
+  const overrides=sheets.map((s,i)=>`<Override PartName="/xl/worksheets/sheet${i+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join('');
+  const sheetTags=sheets.map((s,i)=>`<sheet name="${xesc(safeSheetName(s.name))}" sheetId="${i+1}" r:id="rId${i+1}"/>`).join('');
+  const wbRels=sheets.map((s,i)=>`<Relationship Id="rId${i+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i+1}.xml"/>`).join('');
+  const files=[
+    {name:"[Content_Types].xml",str:`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>${overrides}</Types>`},
+    {name:"_rels/.rels",str:`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>`},
+    {name:"xl/workbook.xml",str:`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>${sheetTags}</sheets></workbook>`},
+    {name:"xl/_rels/workbook.xml.rels",str:`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${wbRels}</Relationships>`}
+  ];
+  sheets.forEach((s,i)=>files.push({name:`xl/worksheets/sheet${i+1}.xml`,str:sheetXML(s.aoa)}));
+  return zipStore(files);
+}
+const CRC_TABLE=(function(){const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=(c&1)?(0xEDB88320^(c>>>1)):(c>>>1);t[n]=c>>>0;}return t;})();
+function crc32(b){let c=0xFFFFFFFF;for(let i=0;i<b.length;i++)c=CRC_TABLE[(c^b[i])&0xFF]^(c>>>8);return (c^0xFFFFFFFF)>>>0;}
+function zipStore(files){const enc=new TextEncoder();const chunks=[];const central=[];let offset=0;const u16=n=>[n&255,(n>>8)&255];const u32=n=>[n&255,(n>>8)&255,(n>>16)&255,(n>>24)&255];
+  files.forEach(f=>{const nb=enc.encode(f.name);const data=enc.encode(f.str);const crc=crc32(data);const local=[].concat(u32(0x04034b50),u16(20),u16(0),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(nb.length),u16(0));chunks.push(new Uint8Array(local),nb,data);const cen=[].concat(u32(0x02014b50),u16(20),u16(20),u16(0),u16(0),u16(0),u16(0),u32(crc),u32(data.length),u32(data.length),u16(nb.length),u16(0),u16(0),u16(0),u16(0),u32(0),u32(offset));central.push(new Uint8Array(cen),nb);offset+=local.length+nb.length+data.length;});
+  let cs=0;central.forEach(c=>cs+=c.length);const end=new Uint8Array([].concat(u32(0x06054b50),u16(0),u16(0),u16(files.length),u16(files.length),u32(cs),u32(offset),u16(0)));const all=[...chunks,...central,end];let tot=0;all.forEach(a=>tot+=a.length);const out=new Uint8Array(tot);let p=0;all.forEach(a=>{out.set(a,p);p+=a.length;});return out;}
+function download(bytes,filename,mime){const blob=new Blob([bytes],{type:mime});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url);},100);}
+
+/* ---------------- helpers + init ---------------- */
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+let toastTimer; function showToast(msg,bad){const t=document.getElementById('toast');t.textContent=msg;t.classList.toggle('bad',!!bad);t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),3600);}
+
+(function init(){
+  renderPending();
+  if(!getUrl()) openSetup();
+  setAuto(true);
+  flushPending(false);
+})();
+</script>
+</body>
+</html>
