@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Cyber Security Showcasing — Penilaian Juri · Telkomsel</title>
+<title>Danone · Showcasing Horizontal — Penilaian Juri</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -571,13 +571,13 @@ document.getElementById('dashExportBtn').addEventListener('click',()=>{
   if(subs.length===0){ showToast('Belum ada data untuk diunduh.',true); return; }
   const sheets=buildCombinedSheets(subs);
   const dt=new Date(), stamp=`${dt.getFullYear()}${String(dt.getMonth()+1).padStart(2,'0')}${String(dt.getDate()).padStart(2,'0')}`;
-  download(buildXlsxMulti(sheets),`Rekap_Showcasing_CyberSecurity_${stamp}.xlsx`,'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  download(buildXlsxMulti(sheets),`Rekap_Showcasing_Danone · Showcasing Horizontal_${stamp}.xlsx`,'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
   showToast(`Rekap ${subs.length} penilaian diunduh ✓`);
 });
 
 /* ---------------- COMBINED EXPORT ---------------- */
 function buildCombinedSheets(subs){
-  const indiv=[]; indiv.push(["Rekap Penilaian Individu — Cyber Security Showcasing (Telkomsel)"]);
+  const indiv=[]; indiv.push(["Rekap Penilaian Individu — Danone · Showcasing Horizontal"]);
   indiv.push(["Diunduh:",new Date().toLocaleString(),"","Total penilaian:",subs.length]); indiv.push([]);
   const head=["Panelist","Group","Coach","No","Participant"]; CRITERIA.forEach((c,i)=>head.push("C"+(i+1)+" (w"+(c.w*100).toFixed(0)+"%)")); head.push("Weighted Score (Individual 40%)","Band","Comment"); indiv.push(head);
   subs.forEach(d=>(d.participants||[]).forEach(p=>{const r=[d.panelist,"Group "+d.group,d.coach,p.no,p.name];(p.scores||[]).forEach(s=>r.push(s===null?"":s));r.push(p.total===null?"":Number(p.total),p.band||"",p.comment);indiv.push(r);}));
