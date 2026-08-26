@@ -9,27 +9,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --red:#E0001B;--red-dark:#B00016;--ink:#0d1424;--slate:#475067;--muted:#7b8499;
-    --line:#e4e7ee;--bg:#eef0f5;--card:#ffffff;--soft:#f6f7fa;
-    --excellent:#0c8f5a;--verygood:#3a8a2e;--good:#a07a00;--fair:#c4661a;--poor:#c01d1d;
-    --shadow:0 1px 2px rgba(13,20,36,.06),0 8px 24px rgba(13,20,36,.06);
+    --red:#2DFF00;--red-dark:#20C900;--ink:#102D5F;--slate:#34527D;--muted:#70819C;
+    --line:#D9E1EC;--bg:#EFF4F8;--card:#ffffff;--soft:#F5F8FB;
+    --excellent:#168A00;--verygood:#2DFF00;--good:#9A7600;--fair:#C4661A;--poor:#C01D1D;
+    --shadow:0 1px 2px rgba(16,45,95,.08),0 8px 24px rgba(16,45,95,.08);
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{font-family:'IBM Plex Sans',system-ui,sans-serif;color:var(--ink);
-    background:radial-gradient(1200px 400px at 100% -10%, rgba(224,0,27,.07), transparent 60%),
-      radial-gradient(900px 360px at -10% 0%, rgba(13,20,36,.06), transparent 55%),var(--bg);
+    background:radial-gradient(1200px 400px at 100% -10%, rgba(45,255,0,.10), transparent 60%),
+      radial-gradient(900px 360px at -10% 0%, rgba(16,45,95,.08), transparent 55%),var(--bg);
     line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh}
   .wrap{max-width:980px;margin:0 auto;padding:24px 18px 80px}
 
-  header.masthead{background:linear-gradient(120deg,#0d1424 0%, #15203a 55%, #1d1322 100%);
+  header.masthead{background:linear-gradient(120deg,#071A3A 0%, #102D5F 58%, #123B37 100%);
     color:#fff;border-radius:18px;overflow:hidden;position:relative;box-shadow:var(--shadow)}
   header.masthead::before{content:"";position:absolute;inset:0;
     background:repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 2px, transparent 2px 22px);pointer-events:none}
   .mast-inner{padding:26px 30px;position:relative;z-index:1}
   .kicker{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.32em;text-transform:uppercase;
-    color:#ff8a96;margin:0 0 10px;display:flex;align-items:center;gap:10px}
-  .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(224,0,27,.25)}
+    color:#2DFF00;margin:0 0 10px;display:flex;align-items:center;gap:10px}
+  .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(45,255,0,.25)}
   header.masthead h1{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(22px,3.4vw,30px);margin:0 0 6px;letter-spacing:-.01em}
   header.masthead p{margin:0;color:#b8c0d4;font-size:13.5px;max-width:62ch}
   .gear{position:absolute;top:18px;right:20px;z-index:2;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
@@ -42,7 +42,7 @@
   .tab{flex:1;text-align:center;padding:12px;border-radius:9px;font-weight:600;font-size:14px;cursor:pointer;
     color:var(--slate);border:none;background:transparent;font-family:inherit;transition:.15s}
   .tab.active{background:var(--ink);color:#fff}
-  .tab .badge{font-family:'IBM Plex Mono',monospace;font-size:11px;background:var(--red);color:#fff;border-radius:20px;padding:1px 7px;margin-left:6px}
+  .tab .badge{font-family:'IBM Plex Mono',monospace;font-size:11px;background:var(--red);color:var(--ink);border-radius:20px;padding:1px 7px;margin-left:6px}
 
   /* setup banner */
   .setup{margin-top:16px;border:1.5px dashed var(--red);background:#fff;border-radius:14px;padding:18px 20px}
@@ -62,13 +62,13 @@
   label.fld{display:block;margin-bottom:16px}
   label.fld:last-child{margin-bottom:0}
   .lab{font-size:12.5px;font-weight:600;color:var(--slate);margin-bottom:6px;display:flex;gap:6px;align-items:center}
-  .req{color:var(--red);font-weight:700}
+  .req{color:var(--red-dark);font-weight:700}
   input[type=text],input[type=url],input[type=number],select,textarea{width:100%;font-family:inherit;font-size:14.5px;color:var(--ink);
     border:1.5px solid var(--line);border-radius:10px;padding:11px 13px;background:#fff;transition:border-color .15s, box-shadow .15s}
   textarea{resize:vertical;min-height:84px}
-  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(224,0,27,.12)}
-  .invalid{border-color:var(--red)!important;box-shadow:0 0 0 3px rgba(224,0,27,.14)!important}
-  .err-msg{color:var(--red);font-size:12px;margin-top:5px;display:none}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(45,255,0,.20)}
+  .invalid{border-color:var(--poor)!important;box-shadow:0 0 0 3px rgba(192,29,29,.14)!important}
+  .err-msg{color:var(--poor);font-size:12px;margin-top:5px;display:none}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media(max-width:640px){.grid2{grid-template-columns:1fr}}
 
@@ -100,7 +100,7 @@
   .pcard-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;
     background:linear-gradient(90deg,#fbfbfd,#f4f5f9);border-bottom:1px solid var(--line)}
   .pcard-head .who{display:flex;align-items:center;gap:11px;min-width:0}
-  .pcard-head .idx{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;color:#fff;background:var(--red);
+  .pcard-head .idx{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;color:var(--ink);background:var(--red);
     width:24px;height:24px;border-radius:7px;display:grid;place-items:center;flex:none}
   .pcard-head .name{font-family:'Sora',sans-serif;font-weight:600;font-size:14.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .scorebadge{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;border-radius:8px;padding:6px 11px;
@@ -124,7 +124,7 @@
   .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
   button.act{font-family:inherit;cursor:pointer;border:none;border-radius:11px;font-weight:600;font-size:14px;transition:transform .08s, box-shadow .15s, background .15s}
   button.act:active{transform:translateY(1px)}
-  .btn-primary{background:var(--red);color:#fff;padding:14px 24px;box-shadow:0 6px 18px rgba(224,0,27,.28);flex:1;min-width:200px}
+  .btn-primary{background:var(--red);color:var(--ink);padding:14px 24px;box-shadow:0 6px 18px rgba(45,255,0,.28);flex:1;min-width:200px}
   .btn-primary:hover{background:var(--red-dark)}
   .btn-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line);padding:14px 20px}
   .btn-ghost:hover{border-color:var(--slate)}
@@ -221,7 +221,7 @@
     </section>
 
     <section class="card">
-      <div class="card-head"><span class="num">2</span><div><h2>Penilaian Individu</h2><p class="sub">Nilai tiap anggota 10–100 pada setiap kriteria. Skor terbobot &amp; band dihitung otomatis.</p></div></div>
+      <div class="card-head"><span class="num">2</span><div><h2>Individual Showcase Performance — 40%</h2><p class="sub">Nilai tiap anggota 10–100 pada setiap kriteria. Setiap kriteria berbobot 8%.</p></div></div>
       <div class="card-body">
         <details class="rubric"><summary>Rubrik &amp; rentang nilai <span>▾</span></summary><div class="rubric-body" id="rubricBody"></div></details>
         <div id="participantArea" style="margin-top:18px"><p class="placeholder">Pilih kelompok untuk memuat peserta.</p></div>
@@ -229,7 +229,7 @@
     </section>
 
     <section class="card">
-      <div class="card-head"><span class="num">3</span><div><h2>Project's Criteria — Innovation &amp; Completeness</h2><p class="sub">Nilai solusi kelompok 10–100 per kriteria.</p></div></div>
+      <div class="card-head"><span class="num">3</span><div><h2>Project Quality — 60%</h2><p class="sub">Nilai kualitas project 10–100 sesuai bobot setiap kriteria.</p></div></div>
       <div class="card-body" id="projectArea"></div>
     </section>
 
@@ -281,7 +281,7 @@
    ISI URL APPS SCRIPT DI SINI (1 baris) — agar juri tinggal buka.
    Tempel URL Web App di antara tanda kutip, lalu simpan & bagikan file ini.
    ========================================================= */
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzXb2lO94k-bq3wpv8RJ_VtbqhXh7E_1aHtKrrtBQYtto6fpKGmxi8VIs3g3HerpM8/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzZcgROfph-TVboF05P1PSZ1Yh7kGyelzNgSWIsuTIpiv3I-t7NhPAyLtMi5lq1t9o/exec";
 /* ========================================================= */
 
 function getUrl(){ if(WEB_APP_URL) return WEB_APP_URL; try{ return localStorage.getItem('tsel_webapp_url')||""; }catch(e){ return ""; } }
@@ -289,27 +289,29 @@ function setUrl(u){ try{ localStorage.setItem('tsel_webapp_url', u); }catch(e){}
 
 /* ---------------- DATA ---------------- */
 const GROUPS = {
-  "1": { coach:"Pak Hotma", project:"OBBPPC Dashboard", members:["Gunawan Wibisono S","Hendri Adi Nugroho","Anita Suryani"] },
-  "2": { coach:"Pak Hendra", project:"FEFO & Freshness Management", members:["Agung Prihatmoko","Erlin Marulia"] },
-  "3": { coach:"Pak Agus", project:"Unified HCP Data Foundation for Omnichannel HCP Journey", members:["Kalis Kinanti","Nurman Amien Jusuf","Nisa Assyifa"] },
-  "4": { coach:"Pak Agus", project:"Water Incentive", members:["Jim Wibowo","Muhamad Maulana Yasin","Muhammad Lutfi","Alan Dinasty","Nisa Assyifa"] },
-  "5": { coach:"Pak Hotma", project:"Water Master Data Management", members:["Hasna Putri Rahmatunissa","Indra Lukas Tjahaja"] }
+  "1": { coach:"Hotma Pasaribu", project:"OBBPPC Dashboard", members:["Gunawan Wibisono S","Hendri Adi Nugroho","Anita Suryani"] },
+  "2": { coach:"Hendra Prima Ananta", project:"FEFO & Freshness Management", members:["Agung Prihatmoko","Erlin Marulia"] },
+  "3": { coach:"Agus Setiawan", project:"Unified HCP Data Foundation for Omnichannel HCP Journey", members:["Kalis Kinanti","Nurman Amien Jusuf","Nisa Assyifa"] },
+  "4": { coach:"Agus Setiawan", project:"Water Incentive", members:["Jim Wibowo","Muhamad Maulana Yasin","Muhammad Lutfi","Alan Dinasty","Nisa Assyifa"] },
+  "5": { coach:"Hotma Pasaribu", project:"Water Master Data Management", members:["Hasna Putri Rahmatunissa","Indra Lukas Tjahaja"] }
 };
 
 const CRITERIA = [
-  { t:"Understanding of the project and its objectives", w:0.2, cat:"Project Understanding" },
-  { t:"Understanding of the participant's role and contribution", w:0.2, cat:"Individual Contribution" },
-  { t:"Ability to explain ideas clearly and systematically", w:0.2, cat:"Communication" },
-  { t:"Problem-solving ability and response to questions", w:0.2, cat:"Problem Solving" },
-  { t:"Knowledge, teamwork, and ownership of the project", w:0.2, cat:"Collaboration & Ownership" }
+  { t:"Project Understanding", w:0.08, cat:"The participant demonstrates clear understanding of the project background, purpose, problem being solved, expected value, current status, and relevance to Danone." },
+  { t:"Project Management Concept Understanding", w:0.08, cat:"The participant shows understanding of relevant PM concepts such as business case, project charter, scope, milestones, stakeholder communication, risk, governance, and benefits." },
+  { t:"Clarity of Explanation", w:0.08, cat:"The participant explains ideas in a structured, logical, and easy-to-follow way. The explanation supports the slide content instead of simply reading from it." },
+  { t:"Q&A and Defense", w:0.08, cat:"The participant responds to judge questions with clear reasoning, relevant examples, and confidence. Answers show ownership of the project and understanding of trade-offs." },
+  { t:"Professionalism, Ownership & Confidence", w:0.08, cat:"The participant presents professionally, communicates with confidence, shows accountability for their part, and contributes meaningfully to the overall team presentation." }
 ];
 
 const PROJECT_CRITERIA = [
-  "The solution provided is applicable for the organization's requirements",
-  "The solution is a new innovation that will give good impact to the organization",
-  "The solutions are useful for the organization",
-  "The solution complies with Telkomsel organization regulations",
-  "The solution complies with government regulations"
+  { t:"Business Case & Strategic Fit", w:0.12, cat:"The project clearly addresses a relevant business problem or opportunity and is aligned with Danone priorities such as operational efficiency, sustainability, consumer trust, quality, compliance, health, or digital transformation." },
+  { t:"Project Charter & Execution Structure", w:0.10, cat:"The project purpose, objectives, scope, deliverables, milestones, assumptions, responsibilities, and success criteria are clearly structured and practical for execution." },
+  { t:"Organizational Fit & Cross-Functional Alignment", w:0.08, cat:"The project reflects Danone's organizational context and shows clear alignment across relevant functions, teams, users, business owners, and supporting departments." },
+  { t:"Innovation & Improvement Value", w:0.08, cat:"The project demonstrates improvement, transformation, or innovation potential through better processes, systems, customer experience, sustainability practices, data visibility, or operational performance." },
+  { t:"Team Collaboration & Presentation Coherence", w:0.08, cat:"The group presents as one aligned team, with smooth transitions, consistent messages, balanced contribution, and clear coordination across presenters." },
+  { t:"Stakeholder & Communication Management", w:0.07, cat:"Key stakeholders are identified clearly, and the communication approach is appropriate for their role, influence, interest, and expected involvement in the project." },
+  { t:"Risk Management & Feasibility", w:0.07, cat:"Major risks, dependencies, constraints, and potential blockers are identified and supported with realistic mitigation actions and ownership." }
 ];
 const BANDS = [
   { name:"Excellent", min:90, color:"var(--excellent)" },{ name:"Very Good", min:80, color:"var(--verygood)" },
@@ -321,8 +323,8 @@ function bandClass(n){ return {Excellent:'b-ex','Very Good':'b-vg',Good:'b-gd',F
 /* ---------------- RENDER RUBRIC ---------------- */
 (function(){
   const el=document.getElementById('rubricBody');
-  let h='<p style="font-size:12.5px;color:var(--slate);margin:8px 0 4px">Tiap kriteria berbobot sama (0.2). Skor akhir individu = jumlah terbobot kelimanya.</p>';
-  CRITERIA.forEach((c,i)=>h+=`<div class="crit-row"><span class="w">${c.w.toFixed(1)}</span><div><div class="txt">${i+1}. ${esc(c.t)}</div><div class="cat">${esc(c.cat)}</div></div></div>`);
+  let h='<p style="font-size:12.5px;color:var(--slate);margin:8px 0 4px">Penilaian individu berbobot total 40% (masing-masing kriteria 8%).</p>';
+  CRITERIA.forEach((c,i)=>h+=`<div class="crit-row"><span class="w">${(c.w*100).toFixed(0)}%</span><div><div class="txt">${i+1}. ${esc(c.t)}</div><div class="cat">${esc(c.cat)}</div></div></div>`);
   h+='<div class="bands"><span class="band-pill b-ex">Excellent · 90–100</span><span class="band-pill b-vg">Very Good · 80–89</span><span class="band-pill b-gd">Good · 70–79</span><span class="band-pill b-fr">Fair · 61–69</span><span class="band-pill b-pr">Poor · &lt;60</span></div>';
   el.innerHTML=h;
 })();
@@ -330,15 +332,15 @@ function bandClass(n){ return {Excellent:'b-ex','Very Good':'b-vg',Good:'b-gd',F
 /* ---------------- RENDER PROJECT ---------------- */
 (function(){
   const el=document.getElementById('projectArea'); let h='';
-  PROJECT_CRITERIA.forEach((t,i)=>h+=`<div class="proj-row"><div class="pr-txt">${i+1}. ${esc(t)}</div><input type="number" min="10" max="100" inputmode="numeric" class="proj-input" data-i="${i}" placeholder="10–100" /></div>`);
-  h+=`<div class="summary-strip"><span class="lbl">Innovation &amp; Completeness (avg)</span><span class="val" id="projAvg">—</span></div>`;
+  PROJECT_CRITERIA.forEach((c,i)=>h+=`<div class="proj-row"><div class="pr-txt"><b>${i+1}. ${esc(c.t)} (${(c.w*100).toFixed(0)}%)</b><small style="display:block;color:var(--muted);margin-top:3px">${esc(c.cat)}</small></div><input type="number" min="10" max="100" inputmode="numeric" class="proj-input" data-i="${i}" placeholder="10–100" /></div>`);
+  h+=`<div class="summary-strip"><span class="lbl">Project Quality (60%) · Weighted Average</span><span class="val" id="projAvg">—</span></div>`;
   el.innerHTML=h;
   el.querySelectorAll('.proj-input').forEach(inp=>inp.addEventListener('input',()=>{clampInput(inp);updateProjAvg();}));
 })();
 function updateProjAvg(){
   const vals=[...document.querySelectorAll('.proj-input')].map(i=>parseFloat(i.value)).filter(v=>!isNaN(v));
   const out=document.getElementById('projAvg');
-  if(vals.length===PROJECT_CRITERIA.length){const avg=vals.reduce((a,b)=>a+b,0)/vals.length;const b=bandFor(avg);out.textContent=`${avg.toFixed(1)} · ${b.name}`;out.style.color=b.color;}
+  if(vals.length===PROJECT_CRITERIA.length){const avg=PROJECT_CRITERIA.reduce((total,c,i)=>total+parseFloat(document.querySelector(`.proj-input[data-i="${i}"]`).value)*c.w,0)/PROJECT_CRITERIA.reduce((total,c)=>total+c.w,0);const b=bandFor(avg);out.textContent=`${avg.toFixed(1)} · ${b.name}`;out.style.color=b.color;}
   else{out.textContent='—';out.style.color='var(--ink)';}
 }
 
@@ -364,7 +366,7 @@ function renderParticipants(members){
 }
 function updateParticipantScore(pi){
   const inputs=[...document.querySelectorAll(`.crit-input[data-p="${pi}"]`)], vals=inputs.map(i=>parseFloat(i.value)), badge=document.getElementById('badge-'+pi);
-  if(vals.every(v=>!isNaN(v))){let t=0;vals.forEach((v,ci)=>t+=v*CRITERIA[ci].w);const b=bandFor(t);badge.textContent=`${t.toFixed(1)} / 100 · ${b.name}`;badge.style.color=b.color;badge.style.borderColor=b.color;}
+  if(vals.every(v=>!isNaN(v))){let t=0;vals.forEach((v,ci)=>t+=v*CRITERIA[ci].w);t=t/CRITERIA.reduce((total,c)=>total+c.w,0);const b=bandFor(t);badge.textContent=`${t.toFixed(1)} / 100 · ${b.name}`;badge.style.color=b.color;badge.style.borderColor=b.color;}
   else{badge.textContent='— / 100';badge.style.color='var(--muted)';badge.style.borderColor='var(--line)';}
 }
 function clampInput(inp){if(inp.value==='')return;let v=parseFloat(inp.value);if(isNaN(v))return;if(v>100)inp.value=100;if(v<0)inp.value=0;}
@@ -380,11 +382,11 @@ function collect(){
     const cInp=document.querySelector(`.comment-input[data-p="${pi}"]`), comment=cInp.value.trim(), cbad=!comment;
     cInp.classList.toggle('invalid',cbad); if(cbad&&!firstBad)firstBad=cInp;
     if(!(scores.every(s=>s!==null)&&!cbad))errors.push(`Skor/komentar "${m}"`);
-    let total=null,band=null; if(scores.every(s=>s!==null)){total=0;scores.forEach((s,ci)=>total+=s*CRITERIA[ci].w);total=Number(total.toFixed(1));band=bandFor(total).name;}
+    let total=null,band=null; if(scores.every(s=>s!==null)){total=scores.reduce((sum,score,ci)=>sum+score*CRITERIA[ci].w,0)/CRITERIA.reduce((sum,c)=>sum+c.w,0);total=Number(total.toFixed(1));band=bandFor(total).name;}
     participants.push({no:pi+1,name:m,scores,total,band,comment});
   });}
   const projScores=PROJECT_CRITERIA.map((t,i)=>{const inp=document.querySelector(`.proj-input[data-i="${i}"]`);const v=parseFloat(inp.value);const bad=isNaN(v)||v<10||v>100;inp.classList.toggle('invalid',bad);if(bad&&!firstBad)firstBad=inp;if(bad)errors.push(`Project ${i+1}`);return bad?null:v;});
-  const projValid=projScores.every(s=>s!==null), projAvg=projValid?Number((projScores.reduce((a,b)=>a+b,0)/projScores.length).toFixed(1)):null;
+  const projWeight=PROJECT_CRITERIA.reduce((total,c)=>total+c.w,0), projValid=projScores.every(s=>s!==null), projAvg=projValid?Number((projScores.reduce((total,score,i)=>total+score*PROJECT_CRITERIA[i].w,0)/projWeight).toFixed(1)):null;
   if(!remarks)errors.push("Overall remarks");
   return {valid:errors.length===0,errors,firstBad,data:{
     submissionId:uuid(), panelist:name, group:g, coach:g?GROUPS[g].coach:'',
@@ -540,7 +542,7 @@ function renderDashboard(){
       const indivAvg=indivAll.length?indivAll.reduce((a,b)=>a+b,0)/indivAll.length:null;
       const projVals=gs.map(s=>s.project&&s.project.avg!==null?Number(s.project.avg):null).filter(v=>v!==null);
       const projAvg=projVals.length?projVals.reduce((a,b)=>a+b,0)/projVals.length:null;
-      const combined=(indivAvg!==null&&projAvg!==null)?(indivAvg+projAvg)/2:(indivAvg!==null?indivAvg:projAvg);
+      const combined=(indivAvg!==null&&projAvg!==null)?(indivAvg*0.4)+(projAvg*0.6):(indivAvg!==null?indivAvg:projAvg);
       if(combined!==null) ranking.push({g,combined,indivAvg,projAvg});
       const judgeChips=gs.map(s=>`<span class="judge-chip">${esc(s.panelist)}</span>`).join('');
       body=`<table class="gtable"><thead><tr><th>Peserta</th><th>Juri</th><th class="num">Rata skor</th><th class="num">Band</th></tr></thead><tbody>${partRows}</tbody></table>`
@@ -556,7 +558,7 @@ function renderDashboard(){
   ranking.sort((a,b)=>b.combined-a.combined);
   let lb='';
   if(ranking.length){
-    lb=`<section class="card"><div class="card-head"><span class="num">🏆</span><div><h2>Peringkat Sementara</h2><p class="sub">Berdasarkan skor gabungan (rata individu + project)/2.</p></div></div><div class="card-body"><table class="gtable"><thead><tr><th class="num">#</th><th>Kelompok</th><th class="num">Individu</th><th class="num">Project</th><th class="num">Gabungan</th><th class="num">Band</th></tr></thead><tbody>`
+    lb=`<section class="card"><div class="card-head"><span class="num">🏆</span><div><h2>Peringkat Sementara</h2><p class="sub">Skor gabungan: individu 40% + project 60%.</p></div></div><div class="card-body"><table class="gtable"><thead><tr><th class="num">#</th><th>Kelompok</th><th class="num">Individu</th><th class="num">Project</th><th class="num">Gabungan</th><th class="num">Band</th></tr></thead><tbody>`
       + ranking.map((r,i)=>{const b=bandFor(r.combined);return `<tr><td class="num rank">${i+1}</td><td>Group ${r.g} · ${esc(GROUPS[r.g].coach)}</td><td class="num">${r.indivAvg!==null?r.indivAvg.toFixed(1):'—'}</td><td class="num">${r.projAvg!==null?r.projAvg.toFixed(1):'—'}</td><td class="num"><b>${r.combined.toFixed(1)}</b></td><td class="num"><span class="bandtag ${bandClass(b.name)}">${b.name}</span></td></tr>`;}).join('')
       + `</tbody></table></div></section>`;
   }
@@ -577,13 +579,13 @@ document.getElementById('dashExportBtn').addEventListener('click',()=>{
 function buildCombinedSheets(subs){
   const indiv=[]; indiv.push(["Rekap Penilaian Individu — Cyber Security Showcasing (Telkomsel)"]);
   indiv.push(["Diunduh:",new Date().toLocaleString(),"","Total penilaian:",subs.length]); indiv.push([]);
-  const head=["Panelist","Group","Coach","No","Participant"]; CRITERIA.forEach((c,i)=>head.push("C"+(i+1)+" (w"+c.w.toFixed(1)+")")); head.push("Weighted Score","Band","Comment"); indiv.push(head);
+  const head=["Panelist","Group","Coach","No","Participant"]; CRITERIA.forEach((c,i)=>head.push("C"+(i+1)+" (w"+(c.w*100).toFixed(0)+"%)")); head.push("Weighted Score (Individual 40%)","Band","Comment"); indiv.push(head);
   subs.forEach(d=>(d.participants||[]).forEach(p=>{const r=[d.panelist,"Group "+d.group,d.coach,p.no,p.name];(p.scores||[]).forEach(s=>r.push(s===null?"":s));r.push(p.total===null?"":Number(p.total),p.band||"",p.comment);indiv.push(r);}));
   const proj=[]; proj.push(["Rekap Project Criteria & Overall Remarks"]); proj.push([]);
-  const ph=["Panelist","Group","Coach"]; PROJECT_CRITERIA.forEach((t,i)=>ph.push("P"+(i+1))); ph.push("Average (Innov. & Completeness)","Band","Overall Remarks","Waktu"); proj.push(ph);
+  const ph=["Panelist","Group","Coach"]; PROJECT_CRITERIA.forEach((c,i)=>ph.push("P"+(i+1)+" (w"+(c.w*100).toFixed(0)+"%)")); ph.push("Weighted Average (Project 60%)","Band","Overall Remarks","Waktu"); proj.push(ph);
   subs.forEach(d=>{const r=[d.panelist,"Group "+d.group,d.coach];(d.project.scores||[]).forEach(s=>r.push(s===null?"":s));r.push(d.project.avg===null?"":Number(d.project.avg),d.project.band||"",d.remarks,d.clientTime?new Date(d.clientTime).toLocaleString():"");proj.push(r);});
-  const leg=[]; leg.push(["Keterangan Kriteria"]); leg.push([]); leg.push(["Kode","Kriteria Individu","Kategori","Bobot"]); CRITERIA.forEach((c,i)=>leg.push(["C"+(i+1),c.t,c.cat,c.w]));
-  leg.push([]); leg.push(["Kode","Project Criteria"]); PROJECT_CRITERIA.forEach((t,i)=>leg.push(["P"+(i+1),t]));
+  const leg=[]; leg.push(["Keterangan Kriteria"]); leg.push([]); leg.push(["Kode","Kriteria Individu","Judging Focus","Bobot"]); CRITERIA.forEach((c,i)=>leg.push(["C"+(i+1),c.t,c.cat,c.w]));
+  leg.push([]); leg.push(["Kode","Project Criteria","Judging Focus","Bobot"]); PROJECT_CRITERIA.forEach((c,i)=>leg.push(["P"+(i+1),c.t,c.cat,c.w]));
   leg.push([]); leg.push(["Band","Rentang"]); leg.push(["Excellent","90-100"]);leg.push(["Very Good","80-89"]);leg.push(["Good","70-79"]);leg.push(["Fair","61-69"]);leg.push(["Poor","<60"]);
   return [{name:"Rekap Individu",aoa:indiv},{name:"Project dan Remarks",aoa:proj},{name:"Keterangan",aoa:leg}];
 }
