@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Danone · Showcasing Horizontal — Penilaian Juri</title>
+<title>Danone · Showcasing Horizontal — Panelist Evaluation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -170,26 +170,26 @@
 <div class="wrap">
 
   <header class="masthead">
-    <button class="gear" id="gearBtn">⚙ Pengaturan</button>
+    <button class="gear" id="gearBtn">⚙ Settings</button>
     <div class="mast-inner">
       <p class="kicker"><span class="dot"></span> Danone · Showcasing Horizontal</p>
-      <h1>Penilaian Juri — Multi-Juri &amp; Live</h1>
-      <p>Tiap juri mengisi penilaian dari perangkat masing-masing. Semua hasil otomatis tergabung di satu pusat dan tampil real-time di tab Dashboard.</p>
+      <h1>Panelist Evaluation &amp; Live</h1>
+      <p>Each panelist fills in their evaluation from their own device. All results are automatically merged into one central hub and shown in real time on the Dashboard tab.</p>
     </div>
   </header>
 
   <div class="tabs">
-    <button class="tab active" id="tabForm">📝 Form Penilaian</button>
-    <button class="tab" id="tabDash">📊 Dashboard Live <span class="badge" id="dashBadge">0</span></button>
+    <button class="tab active" id="tabForm">📝 Evaluation Form</button>
+    <button class="tab" id="tabDash">📊 Live Dashboard <span class="badge" id="dashBadge">0</span></button>
   </div>
 
   <!-- setup banner -->
   <div class="setup hidden" id="setupBanner">
-    <h3>⚙ Hubungkan ke pusat (Google Sheet)</h3>
-    <p>Tempel <b>Web App URL</b> dari Google Apps Script Anda. Cukup sekali per perangkat (atau tanam di file sebelum dibagikan ke juri).</p>
+    <h3>⚙ Connect to the hub (Google Sheet)</h3>
+    <p>Paste the <b>Web App URL</b> from your Google Apps Script. This only needs to be done once per device (or embed it in the file before sharing it with judges).</p>
     <div class="row">
       <input type="url" id="urlInput" placeholder="https://script.google.com/macros/s/..../exec" />
-      <button class="act btn-primary" style="flex:none;min-width:120px" id="saveUrlBtn">Simpan</button>
+      <button class="act btn-primary" style="flex:none;min-width:120px" id="saveUrlBtn">Save</button>
     </div>
     <p style="margin-top:10px;font-size:12px" id="urlState"></p>
   </div>
@@ -197,60 +197,60 @@
   <!-- ============ FORM VIEW ============ -->
   <div id="formView">
     <section class="card">
-      <div class="card-head"><span class="num">1</span><div><h2>Juri &amp; Kelompok</h2><p class="sub">Identitas juri dan kelompok yang dinilai.</p></div></div>
+      <div class="card-head"><span class="num">1</span><div><h2>Panelist &amp; Group</h2><p class="sub">Panelist identity and the group being evaluated.</p></div></div>
       <div class="card-body">
         <div class="grid2">
           <label class="fld">
-            <span class="lab">Nama Juri / Panelist <span class="req">*</span></span>
-            <input type="text" id="panelistName" placeholder="Nama lengkap Anda" autocomplete="name" />
-            <span class="err-msg" id="err-panelistName">Nama juri wajib diisi.</span>
+            <span class="lab">Panelist Name <span class="req">*</span></span>
+            <input type="text" id="panelistName" placeholder="Your full name" autocomplete="name" />
+            <span class="err-msg" id="err-panelistName">Panelist name is required.</span>
           </label>
           <label class="fld">
-            <span class="lab">Kelompok <span class="req">*</span></span>
+            <span class="lab">Group <span class="req">*</span></span>
             <select id="groupSelect">
-              <option value="">— Pilih kelompok —</option>
+              <option value="">— Select a group —</option>
               <option value="1">Group 1</option><option value="2">Group 2</option>
               <option value="3">Group 3</option><option value="4">Group 4</option><option value="5">Group 5</option>
             </select>
-            <span class="err-msg" id="err-groupSelect">Pilih kelompok terlebih dahulu.</span>
+            <span class="err-msg" id="err-groupSelect">Please select a group first.</span>
           </label>
         </div>
-        <div class="lab" style="margin-top:4px">Anggota Kelompok</div>
-        <div class="members" id="memberBox"><span class="placeholder">Pilih kelompok untuk memuat coach &amp; anggota otomatis.</span></div>
+        <div class="lab" style="margin-top:4px">Group Members</div>
+        <div class="members" id="memberBox"><span class="placeholder">Select a group to automatically load the coach &amp; members.</span></div>
       </div>
     </section>
 
     <section class="card">
-      <div class="card-head"><span class="num">2</span><div><h2>Individual Showcase Performance — 40%</h2><p class="sub">Nilai tiap anggota 10–100 pada setiap kriteria. Setiap kriteria berbobot 8%.</p></div></div>
+      <div class="card-head"><span class="num">2</span><div><h2>Individual Showcase Performance — 40%</h2><p class="sub">Score each member 10–100 on every criterion. Each criterion is weighted 8%.</p></div></div>
       <div class="card-body">
-        <details class="rubric"><summary>Rubrik &amp; rentang nilai <span>▾</span></summary><div class="rubric-body" id="rubricBody"></div></details>
-        <div id="participantArea" style="margin-top:18px"><p class="placeholder">Pilih kelompok untuk memuat peserta.</p></div>
+        <details class="rubric"><summary>Rubric &amp; score ranges <span>▾</span></summary><div class="rubric-body" id="rubricBody"></div></details>
+        <div id="participantArea" style="margin-top:18px"><p class="placeholder">Select a group to load participants.</p></div>
       </div>
     </section>
 
     <section class="card">
-      <div class="card-head"><span class="num">3</span><div><h2>Project Quality — 60%</h2><p class="sub">Nilai kualitas project 10–100 sesuai bobot setiap kriteria.</p></div></div>
+      <div class="card-head"><span class="num">3</span><div><h2>Project Quality — 60%</h2><p class="sub">Score project quality 10–100 according to each criterion's weight.</p></div></div>
       <div class="card-body" id="projectArea"></div>
     </section>
 
     <section class="card">
-      <div class="card-head"><span class="num">4</span><div><h2>Overall Remarks</h2><p class="sub">Catatan keseluruhan untuk kelompok.</p></div></div>
+      <div class="card-head"><span class="num">4</span><div><h2>Overall Remarks</h2><p class="sub">Overall notes for the group.</p></div></div>
       <div class="card-body">
         <label class="fld"><span class="lab">Remarks <span class="req">*</span></span>
-          <textarea id="overallRemarks" placeholder="Observasi keseluruhan, kelebihan, dan area perbaikan…"></textarea>
-          <span class="err-msg" id="err-overallRemarks">Overall remarks wajib diisi.</span>
+          <textarea id="overallRemarks" placeholder="Overall observations, strengths, and areas for improvement…"></textarea>
+          <span class="err-msg" id="err-overallRemarks">Overall remarks are required.</span>
         </label>
       </div>
     </section>
 
     <div class="actions">
-      <button class="act btn-primary" id="submitBtn">✓ Kirim Penilaian ke Pusat</button>
-      <button class="act btn-ghost" id="resetBtn">Kosongkan Form</button>
+      <button class="act btn-primary" id="submitBtn">✓ Submit Evaluation to Hub</button>
+      <button class="act btn-ghost" id="resetBtn">Clear Form</button>
     </div>
-    <p class="formnote">Field wajib ditandai <span class="req">*</span>; skor harus 10–100. Setelah terkirim, hasil langsung muncul di Dashboard Live untuk semua juri.</p>
+    <p class="formnote">Required fields are marked <span class="req">*</span>; scores must be 10–100. Once submitted, results appear immediately on the Live Dashboard for all panelists.</p>
 
     <div class="status" id="statusBox">
-      <div>Terkirim sesi ini: <b id="sentCount">0</b> · Tertunda: <b id="pendCount">0</b></div>
+      <div>Submitted this session: <b id="sentCount">0</b> · Pending: <b id="pendCount">0</b></div>
       <div id="pendingList"></div>
     </div>
   </div>
@@ -260,12 +260,12 @@
     <div class="dash-controls">
       <div class="left">
         <span><span class="live-dot" id="liveDot"></span> <b style="font-family:'Sora'">Live</b></span>
-        <label class="switch"><input type="checkbox" id="autoToggle" checked /> Auto-refresh (8 dtk)</label>
-        <span class="updated" id="updatedAt">Belum dimuat</span>
+        <label class="switch"><input type="checkbox" id="autoToggle" checked /> Auto-refresh (8 sec)</label>
+        <span class="updated" id="updatedAt">Not loaded yet</span>
       </div>
       <div style="display:flex;gap:10px">
         <button class="act btn-ghost" id="refreshBtn">↻ Refresh</button>
-        <button class="act btn-primary" style="min-width:auto;flex:none" id="dashExportBtn">⬇ Download Rekap (Excel)</button>
+        <button class="act btn-primary" style="min-width:auto;flex:none" id="dashExportBtn">⬇ Download Summary (Excel)</button>
       </div>
     </div>
 
@@ -278,8 +278,8 @@
 
 <script>
 /* =========================================================
-   ISI URL APPS SCRIPT DI SINI (1 baris) — agar juri tinggal buka.
-   Tempel URL Web App di antara tanda kutip, lalu simpan & bagikan file ini.
+   PUT THE APPS SCRIPT WEB APP URL HERE (1 line) — so judges can just open the file.
+   Paste the Web App URL between the quotes, then save & share this file.
    ========================================================= */
 const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzZcgROfph-TVboF05P1PSZ1Yh7kGyelzNgSWIsuTIpiv3I-t7NhPAyLtMi5lq1t9o/exec";
 /* ========================================================= */
@@ -323,7 +323,7 @@ function bandClass(n){ return {Excellent:'b-ex','Very Good':'b-vg',Good:'b-gd',F
 /* ---------------- RENDER RUBRIC ---------------- */
 (function(){
   const el=document.getElementById('rubricBody');
-  let h='<p style="font-size:12.5px;color:var(--slate);margin:8px 0 4px">Penilaian individu berbobot total 40% (masing-masing kriteria 8%).</p>';
+  let h='<p style="font-size:12.5px;color:var(--slate);margin:8px 0 4px">Individual scoring is weighted 40% in total (each criterion is 8%).</p>';
   CRITERIA.forEach((c,i)=>h+=`<div class="crit-row"><span class="w">${(c.w*100).toFixed(0)}%</span><div><div class="txt">${i+1}. ${esc(c.t)}</div><div class="cat">${esc(c.cat)}</div></div></div>`);
   h+='<div class="bands"><span class="band-pill b-ex">Excellent · 90–100</span><span class="band-pill b-vg">Very Good · 80–89</span><span class="band-pill b-gd">Good · 70–79</span><span class="band-pill b-fr">Fair · 61–69</span><span class="band-pill b-pr">Poor · &lt;60</span></div>';
   el.innerHTML=h;
@@ -348,7 +348,7 @@ function updateProjAvg(){
 const groupSelect=document.getElementById('groupSelect');
 groupSelect.addEventListener('change',()=>{
   const g=groupSelect.value, memberBox=document.getElementById('memberBox'), pArea=document.getElementById('participantArea');
-  if(!g){memberBox.innerHTML='<span class="placeholder">Pilih kelompok untuk memuat coach &amp; anggota otomatis.</span>';pArea.innerHTML='<p class="placeholder">Pilih kelompok untuk memuat peserta.</p>';return;}
+  if(!g){memberBox.innerHTML='<span class="placeholder">Select a group to automatically load the coach &amp; members.</span>';pArea.innerHTML='<p class="placeholder">Select a group to load participants.</p>';return;}
   const data=GROUPS[g];
   memberBox.innerHTML=`<div class="coach">👤 Coach: <b>${esc(data.coach)}</b></div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px">`
     +data.members.map((m,i)=>`<div style="font-size:13px;background:var(--soft);border:1px solid var(--line);border-radius:9px;padding:8px 11px"><b style="color:var(--red);font-family:'IBM Plex Mono',monospace">${i+1}.</b> ${esc(m)}</div>`).join('')+`</div>`;
@@ -359,7 +359,7 @@ function renderParticipants(members){
   members.forEach((name,pi)=>{
     h+=`<div class="pcard"><div class="pcard-head"><div class="who"><span class="idx">${pi+1}</span><span class="name">${esc(name)}</span></div><span class="scorebadge" id="badge-${pi}">— / 100</span></div><div class="pcard-body">`;
     CRITERIA.forEach((c,ci)=>h+=`<div class="ci"><div class="ci-label">${ci+1}. ${esc(c.t)}<small>${esc(c.cat)} · w ${c.w.toFixed(1)}</small></div><input type="number" min="10" max="100" inputmode="numeric" class="crit-input" data-p="${pi}" data-c="${ci}" placeholder="10–100" /></div>`);
-    h+=`<div class="pcomment"><label class="fld" style="margin:0"><span class="lab">Comment <span class="req">*</span></span><textarea class="comment-input" data-p="${pi}" placeholder="Komentar untuk ${esc(name)}…" style="min-height:60px"></textarea></label></div></div></div>`;
+    h+=`<div class="pcomment"><label class="fld" style="margin:0"><span class="lab">Comment <span class="req">*</span></span><textarea class="comment-input" data-p="${pi}" placeholder="Comment for ${esc(name)}…" style="min-height:60px"></textarea></label></div></div></div>`;
   });
   area.innerHTML=h;
   area.querySelectorAll('.crit-input').forEach(inp=>inp.addEventListener('input',()=>{clampInput(inp);updateParticipantScore(inp.dataset.p);}));
@@ -375,13 +375,13 @@ function clampInput(inp){if(inp.value==='')return;let v=parseFloat(inp.value);if
 function collect(){
   const name=document.getElementById('panelistName').value.trim(), g=groupSelect.value, remarks=document.getElementById('overallRemarks').value.trim(), errors=[];
   setErr('panelistName',!name); setErr('groupSelect',!g); setErr('overallRemarks',!remarks);
-  if(!name)errors.push("Nama juri"); if(!g)errors.push("Kelompok");
+  if(!name)errors.push("Panelist name"); if(!g)errors.push("Group");
   let participants=[], firstBad=null;
   if(g){GROUPS[g].members.forEach((m,pi)=>{
     const scores=CRITERIA.map((c,ci)=>{const inp=document.querySelector(`.crit-input[data-p="${pi}"][data-c="${ci}"]`);const v=parseFloat(inp.value);const bad=isNaN(v)||v<10||v>100;inp.classList.toggle('invalid',bad);if(bad&&!firstBad)firstBad=inp;return bad?null:v;});
     const cInp=document.querySelector(`.comment-input[data-p="${pi}"]`), comment=cInp.value.trim(), cbad=!comment;
     cInp.classList.toggle('invalid',cbad); if(cbad&&!firstBad)firstBad=cInp;
-    if(!(scores.every(s=>s!==null)&&!cbad))errors.push(`Skor/komentar "${m}"`);
+    if(!(scores.every(s=>s!==null)&&!cbad))errors.push(`Score/comment for "${m}"`);
     let total=null,band=null; if(scores.every(s=>s!==null)){total=scores.reduce((sum,score,ci)=>sum+score*CRITERIA[ci].w,0)/CRITERIA.reduce((sum,c)=>sum+c.w,0);total=Number(total.toFixed(1));band=bandFor(total).name;}
     participants.push({no:pi+1,name:m,scores,total,band,comment});
   });}
@@ -405,45 +405,45 @@ function renderPending(){
   const p=getPending(); document.getElementById('pendCount').textContent=p.length; document.getElementById('sentCount').textContent=SENT;
   const list=document.getElementById('pendingList');
   if(p.length===0){ list.innerHTML=''; return; }
-  list.innerHTML='<div style="margin-top:10px;font-size:12px;color:var(--poor)"><b>Belum terkirim</b> (akan dikirim ulang otomatis, atau klik kirim ulang):</div>'
-    + p.map((e,i)=>`<div class="pending-item"><span>${esc(e.panelist)} · Group ${esc(e.group)} · ${e.participants.length} peserta</span><button class="act btn-ghost" style="padding:6px 12px;font-size:12px" data-retry="${i}">Kirim ulang</button></div>`).join('');
+  list.innerHTML='<div style="margin-top:10px;font-size:12px;color:var(--poor)"><b>Not sent yet</b> (will be retried automatically, or click resend):</div>'
+    + p.map((e,i)=>`<div class="pending-item"><span>${esc(e.panelist)} · Group ${esc(e.group)} · ${e.participants.length} participants</span><button class="act btn-ghost" style="padding:6px 12px;font-size:12px" data-retry="${i}">Resend</button></div>`).join('');
   list.querySelectorAll('[data-retry]').forEach(b=>b.addEventListener('click',()=>flushPending(true)));
 }
 
 async function postPayload(payload){
   const url=getUrl(); if(!url) throw new Error('no-url');
-  // body as plain string -> tanpa preflight CORS
+  // body as plain string -> avoids CORS preflight
   const res=await fetch(url,{method:'POST',body:JSON.stringify(payload),redirect:'follow'});
   let j=null; try{ j=await res.json(); }catch(e){}
   if(j && j.ok===false) throw new Error(j.error||'server-error');
-  return true; // anggap sukses bila tidak ada error eksplisit
+  return true; // treat as success if there's no explicit error
 }
 async function flushPending(manual){
   const url=getUrl(); if(!url) return;
-  let p=getPending(); if(p.length===0){ if(manual) showToast('Tidak ada yang tertunda.'); return; }
+  let p=getPending(); if(p.length===0){ if(manual) showToast('Nothing pending.'); return; }
   const remain=[];
   for(const item of p){ try{ await postPayload(item); SENT++; }catch(e){ remain.push(item); } }
   setPending(remain);
-  if(remain.length===0) showToast('Semua data tertunda berhasil dikirim ✓');
-  else if(manual) showToast('Sebagian masih gagal — cek koneksi.', true);
+  if(remain.length===0) showToast('All pending data sent successfully ✓');
+  else if(manual) showToast('Some submissions still failed — check your connection.', true);
 }
 
 document.getElementById('submitBtn').addEventListener('click', async ()=>{
-  if(!getUrl()){ openSetup('Tempel Web App URL dulu agar penilaian bisa terkirim ke pusat.'); return; }
+  if(!getUrl()){ openSetup('Paste the Web App URL first so scores can be sent to the hub.'); return; }
   const res=collect();
   if(!res.valid){
     if(res.firstBad){res.firstBad.scrollIntoView({behavior:'smooth',block:'center'});res.firstBad.focus({preventScroll:true});}
-    showToast('Lengkapi dulu: '+res.errors.slice(0,3).join(', ')+(res.errors.length>3?` (+${res.errors.length-3} lagi)`:''),true);
+    showToast('Please complete: '+res.errors.slice(0,3).join(', ')+(res.errors.length>3?` (+${res.errors.length-3} more)`:''),true);
     return;
   }
-  const btn=document.getElementById('submitBtn'); btn.disabled=true; const old=btn.textContent; btn.textContent='Mengirim…';
+  const btn=document.getElementById('submitBtn'); btn.disabled=true; const old=btn.textContent; btn.textContent='Sending…';
   try{
     await postPayload(res.data); SENT++; renderPending();
-    showToast(`Terkirim ke pusat ✓ (${res.data.panelist} · Group ${res.data.group})`);
+    showToast(`Submitted to hub ✓ (${res.data.panelist} · Group ${res.data.group})`);
     clearForm();
   }catch(err){
     const p=getPending(); p.push(res.data); setPending(p);
-    showToast('Gagal kirim (koneksi?) — disimpan & akan dikirim ulang otomatis.', true);
+    showToast('Failed to send (connection issue?) — saved and will be retried automatically.', true);
   }finally{ btn.disabled=false; btn.textContent=old; }
 });
 
@@ -453,7 +453,7 @@ function clearForm(){
   document.querySelectorAll('.err-msg').forEach(e=>e.style.display='none');
   document.getElementById('projAvg').textContent='—';
 }
-document.getElementById('resetBtn').addEventListener('click',()=>{ if(!confirm('Kosongkan form?'))return; clearForm(); window.scrollTo({top:0,behavior:'smooth'}); });
+document.getElementById('resetBtn').addEventListener('click',()=>{ if(!confirm('Clear the form?'))return; clearForm(); window.scrollTo({top:0,behavior:'smooth'}); });
 ['panelistName','overallRemarks'].forEach(id=>document.getElementById(id).addEventListener('input',()=>setErr(id,false)));
 groupSelect.addEventListener('change',()=>setErr('groupSelect',!groupSelect.value));
 
@@ -469,13 +469,13 @@ document.getElementById('gearBtn').addEventListener('click',()=>openSetup());
 function openSetup(msg){
   setupBanner.classList.remove('hidden');
   document.getElementById('urlInput').value=getUrl();
-  document.getElementById('urlState').textContent=msg|| (getUrl()?('Terhubung: '+getUrl()):'Belum terhubung.');
+  document.getElementById('urlState').textContent=msg|| (getUrl()?('Connected: '+getUrl()):'Not connected yet.');
   setupBanner.scrollIntoView({behavior:'smooth',block:'center'});
 }
 document.getElementById('saveUrlBtn').addEventListener('click',()=>{
   const v=document.getElementById('urlInput').value.trim();
-  if(!/^https:\/\/script\.google\.com\/macros\/s\//.test(v)){ showToast('URL tidak valid. Harus diawali https://script.google.com/macros/s/...',true); return; }
-  setUrl(v); showToast('Tersambung ke pusat ✓'); document.getElementById('urlState').textContent='Terhubung: '+v;
+  if(!/^https:\/\/script\.google\.com\/macros\/s\//.test(v)){ showToast('Invalid URL. It must start with https://script.google.com/macros/s/...',true); return; }
+  setUrl(v); showToast('Connected to hub ✓'); document.getElementById('urlState').textContent='Connected: '+v;
   flushPending(false); refreshDashboard();
 });
 
@@ -491,19 +491,19 @@ function setAuto(on){
 }
 async function refreshDashboard(){
   const url=getUrl();
-  if(!url){ document.getElementById('dashGroups').innerHTML='<section class="card"><div class="card-body"><p class="placeholder">Belum terhubung ke pusat. Klik ⚙ Pengaturan dan tempel Web App URL.</p></div></section>'; document.getElementById('statCards').innerHTML=''; return; }
+  if(!url){ document.getElementById('dashGroups').innerHTML='<section class="card"><div class="card-body"><p class="placeholder">Not connected to the hub yet. Click ⚙ Settings and paste the Web App URL.</p></div></section>'; document.getElementById('statCards').innerHTML=''; return; }
   try{
     const res=await fetch(url+'?action=list&t='+Date.now(),{redirect:'follow'});
     const j=await res.json();
     DASH_DATA=(j&&j.submissions)?j.submissions:[];
     renderDashboard();
-    document.getElementById('updatedAt').textContent='Diperbarui '+new Date().toLocaleTimeString();
+    document.getElementById('updatedAt').textContent='Updated '+new Date().toLocaleTimeString();
   }catch(err){
-    document.getElementById('updatedAt').textContent='Gagal memuat (cek koneksi/URL)';
+    document.getElementById('updatedAt').textContent='Failed to load (check connection/URL)';
   }
 }
 function dedupe(subs){
-  // buang submissionId duplikat; lalu per (panelist|group) ambil clientTime terbaru
+  // remove duplicate submissionId; then for each (panelist|group) keep the latest clientTime
   const byId={}; subs.forEach(s=>{ byId[s.submissionId]=s; });
   const uniq=Object.values(byId);
   const byKey={};
@@ -516,9 +516,9 @@ function renderDashboard(){
   const judges=new Set(subs.map(s=>s.panelist));
   const groupsScored=new Set(subs.map(s=>s.group));
   document.getElementById('statCards').innerHTML=
-     stat(subs.length,'Penilaian masuk')
-   + stat(judges.size,'Juri aktif')
-   + stat(groupsScored.size+' / 5','Kelompok dinilai');
+     stat(subs.length,'Scores received')
+   + stat(judges.size,'Active panelists')
+   + stat(groupsScored.size+' / 5','Groups scored');
 
   // aggregate per group
   const order=Object.keys(GROUPS);
@@ -527,7 +527,7 @@ function renderDashboard(){
     const gs=subs.filter(s=>s.group===g);
     const data=GROUPS[g];
     let body;
-    if(gs.length===0){ body=`<p class="placeholder">Belum ada juri menilai kelompok ini.</p>`; }
+    if(gs.length===0){ body=`<p class="placeholder">No judge has scored this group yet.</p>`; }
     else{
       // per participant: average of totals across judges
       const partRows=data.members.map((m,pi)=>{
@@ -535,7 +535,7 @@ function renderDashboard(){
         const vals=scored.map(x=>x.score);
         const avg=vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null;
         const b=avg!==null?bandFor(avg):null;
-        const judgeCell=scored.length?scored.map(x=>`<span class="judge-chip">${esc(x.judge)}</span>`).join(''):'<span style="color:var(--muted)">belum dinilai</span>';
+        const judgeCell=scored.length?scored.map(x=>`<span class="judge-chip">${esc(x.judge)}</span>`).join(''):'<span style="color:var(--muted)">not yet scored</span>';
         return `<tr><td>${esc(m)}</td><td>${judgeCell}</td><td class="num">${avg!==null?avg.toFixed(1):'—'}</td><td class="num">${b?`<span class="bandtag ${bandClass(b.name)}">${b.name}</span>`:'—'}</td></tr>`;
       }).join('');
       const indivAll=data.members.map((m,pi)=>{const vals=gs.map(s=>{const p=(s.participants||[]).find(x=>x.no===pi+1||x.name===m);return p&&p.total!==null?Number(p.total):null;}).filter(v=>v!==null);return vals.length?vals.reduce((a,b)=>a+b,0)/vals.length:null;}).filter(v=>v!==null);
@@ -545,20 +545,20 @@ function renderDashboard(){
       const combined=(indivAvg!==null&&projAvg!==null)?(indivAvg*0.4)+(projAvg*0.6):(indivAvg!==null?indivAvg:projAvg);
       if(combined!==null) ranking.push({g,combined,indivAvg,projAvg});
       const judgeChips=gs.map(s=>`<span class="judge-chip">${esc(s.panelist)}</span>`).join('');
-      body=`<table class="gtable"><thead><tr><th>Peserta</th><th>Juri</th><th class="num">Rata skor</th><th class="num">Band</th></tr></thead><tbody>${partRows}</tbody></table>`
-        + `<div class="summary-strip"><span><span class="lbl">Rata Individu</span><br><span class="val">${indivAvg!==null?indivAvg.toFixed(1):'—'}</span></span>`
+      body=`<table class="gtable"><thead><tr><th>Participant</th><th>Panelist</th><th class="num">Avg score</th><th class="num">Band</th></tr></thead><tbody>${partRows}</tbody></table>`
+        + `<div class="summary-strip"><span><span class="lbl">Individual Avg</span><br><span class="val">${indivAvg!==null?indivAvg.toFixed(1):'—'}</span></span>`
         + `<span><span class="lbl">Project (Innov.&Compl.)</span><br><span class="val">${projAvg!==null?projAvg.toFixed(1):'—'}</span></span>`
-        + `<span><span class="lbl">Skor Gabungan</span><br><span class="val" style="color:${combined!==null?bandFor(combined).color:'var(--ink)'}">${combined!==null?combined.toFixed(1):'—'}</span></span></div>`
-        + `<div style="margin-top:12px"><span class="lbl">Juri yang sudah menilai (${gs.length}):</span><br>${judgeChips}</div>`;
+        + `<span><span class="lbl">Combined Score</span><br><span class="val" style="color:${combined!==null?bandFor(combined).color:'var(--ink)'}">${combined!==null?combined.toFixed(1):'—'}</span></span></div>`
+        + `<div style="margin-top:12px"><span class="lbl">Panelists who have scored (${gs.length}):</span><br>${judgeChips}</div>`;
     }
-    cards.push(`<section class="card"><div class="card-head"><span class="num" style="background:var(--red)">${g}</span><div><h2>Group ${g}</h2><p class="sub">Coach ${esc(data.coach)} · ${data.members.length} peserta</p></div></div><div class="card-body">${body}</div></section>`);
+    cards.push(`<section class="card"><div class="card-head"><span class="num" style="background:var(--red)">${g}</span><div><h2>Group ${g}</h2><p class="sub">Coach ${esc(data.coach)} · ${data.members.length} participants</p></div></div><div class="card-body">${body}</div></section>`);
   });
 
   // leaderboard
   ranking.sort((a,b)=>b.combined-a.combined);
   let lb='';
   if(ranking.length){
-    lb=`<section class="card"><div class="card-head"><span class="num">🏆</span><div><h2>Peringkat Sementara</h2><p class="sub">Skor gabungan: individu 40% + project 60%.</p></div></div><div class="card-body"><table class="gtable"><thead><tr><th class="num">#</th><th>Kelompok</th><th class="num">Individu</th><th class="num">Project</th><th class="num">Gabungan</th><th class="num">Band</th></tr></thead><tbody>`
+    lb=`<section class="card"><div class="card-head"><span class="num">🏆</span><div><h2>Current Ranking</h2><p class="sub">Combined score: individual 40% + project 60%.</p></div></div><div class="card-body"><table class="gtable"><thead><tr><th class="num">#</th><th>Group</th><th class="num">Individual</th><th class="num">Project</th><th class="num">Combined</th><th class="num">Band</th></tr></thead><tbody>`
       + ranking.map((r,i)=>{const b=bandFor(r.combined);return `<tr><td class="num rank">${i+1}</td><td>Group ${r.g} · ${esc(GROUPS[r.g].coach)}</td><td class="num">${r.indivAvg!==null?r.indivAvg.toFixed(1):'—'}</td><td class="num">${r.projAvg!==null?r.projAvg.toFixed(1):'—'}</td><td class="num"><b>${r.combined.toFixed(1)}</b></td><td class="num"><span class="bandtag ${bandClass(b.name)}">${b.name}</span></td></tr>`;}).join('')
       + `</tbody></table></div></section>`;
   }
@@ -568,26 +568,26 @@ function stat(n,l){ return `<div class="stat"><div class="n">${n}</div><div clas
 
 document.getElementById('dashExportBtn').addEventListener('click',()=>{
   const subs=dedupe(DASH_DATA);
-  if(subs.length===0){ showToast('Belum ada data untuk diunduh.',true); return; }
+  if(subs.length===0){ showToast('No data available to download.',true); return; }
   const sheets=buildCombinedSheets(subs);
   const dt=new Date(), stamp=`${dt.getFullYear()}${String(dt.getMonth()+1).padStart(2,'0')}${String(dt.getDate()).padStart(2,'0')}`;
-  download(buildXlsxMulti(sheets),`Rekap_Showcasing_Danone · Showcasing Horizontal_${stamp}.xlsx`,'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-  showToast(`Rekap ${subs.length} penilaian diunduh ✓`);
+  download(buildXlsxMulti(sheets),`Summary_Showcasing_Danone · Showcasing Horizontal_${stamp}.xlsx`,'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  showToast(`Summary of ${subs.length} scores downloaded ✓`);
 });
 
 /* ---------------- COMBINED EXPORT ---------------- */
 function buildCombinedSheets(subs){
-  const indiv=[]; indiv.push(["Rekap Penilaian Individu — Danone · Showcasing Horizontal"]);
-  indiv.push(["Diunduh:",new Date().toLocaleString(),"","Total penilaian:",subs.length]); indiv.push([]);
+  const indiv=[]; indiv.push(["Individual Panelist Evaluation Summary — Danone · Showcasing Horizontal"]);
+  indiv.push(["Downloaded:",new Date().toLocaleString(),"","Total scores:",subs.length]); indiv.push([]);
   const head=["Panelist","Group","Coach","No","Participant"]; CRITERIA.forEach((c,i)=>head.push("C"+(i+1)+" (w"+(c.w*100).toFixed(0)+"%)")); head.push("Weighted Score (Individual 40%)","Band","Comment"); indiv.push(head);
   subs.forEach(d=>(d.participants||[]).forEach(p=>{const r=[d.panelist,"Group "+d.group,d.coach,p.no,p.name];(p.scores||[]).forEach(s=>r.push(s===null?"":s));r.push(p.total===null?"":Number(p.total),p.band||"",p.comment);indiv.push(r);}));
-  const proj=[]; proj.push(["Rekap Project Criteria & Overall Remarks"]); proj.push([]);
-  const ph=["Panelist","Group","Coach"]; PROJECT_CRITERIA.forEach((c,i)=>ph.push("P"+(i+1)+" (w"+(c.w*100).toFixed(0)+"%)")); ph.push("Weighted Average (Project 60%)","Band","Overall Remarks","Waktu"); proj.push(ph);
+  const proj=[]; proj.push(["Project Criteria & Overall Remarks Summary"]); proj.push([]);
+  const ph=["Panelist","Group","Coach"]; PROJECT_CRITERIA.forEach((c,i)=>ph.push("P"+(i+1)+" (w"+(c.w*100).toFixed(0)+"%)")); ph.push("Weighted Average (Project 60%)","Band","Overall Remarks","Time"); proj.push(ph);
   subs.forEach(d=>{const r=[d.panelist,"Group "+d.group,d.coach];(d.project.scores||[]).forEach(s=>r.push(s===null?"":s));r.push(d.project.avg===null?"":Number(d.project.avg),d.project.band||"",d.remarks,d.clientTime?new Date(d.clientTime).toLocaleString():"");proj.push(r);});
-  const leg=[]; leg.push(["Keterangan Kriteria"]); leg.push([]); leg.push(["Kode","Kriteria Individu","Judging Focus","Bobot"]); CRITERIA.forEach((c,i)=>leg.push(["C"+(i+1),c.t,c.cat,c.w]));
-  leg.push([]); leg.push(["Kode","Project Criteria","Judging Focus","Bobot"]); PROJECT_CRITERIA.forEach((c,i)=>leg.push(["P"+(i+1),c.t,c.cat,c.w]));
-  leg.push([]); leg.push(["Band","Rentang"]); leg.push(["Excellent","90-100"]);leg.push(["Very Good","80-89"]);leg.push(["Good","70-79"]);leg.push(["Fair","61-69"]);leg.push(["Poor","<60"]);
-  return [{name:"Rekap Individu",aoa:indiv},{name:"Project dan Remarks",aoa:proj},{name:"Keterangan",aoa:leg}];
+  const leg=[]; leg.push(["Criteria Legend"]); leg.push([]); leg.push(["Code","Individual Criteria","Evaluation Focus","Weight"]); CRITERIA.forEach((c,i)=>leg.push(["C"+(i+1),c.t,c.cat,c.w]));
+  leg.push([]); leg.push(["Code","Project Criteria","Evaluation Focus","Weight"]); PROJECT_CRITERIA.forEach((c,i)=>leg.push(["P"+(i+1),c.t,c.cat,c.w]));
+  leg.push([]); leg.push(["Band","Range"]); leg.push(["Excellent","90-100"]);leg.push(["Very Good","80-89"]);leg.push(["Good","70-79"]);leg.push(["Fair","61-69"]);leg.push(["Poor","<60"]);
+  return [{name:"Individual Summary",aoa:indiv},{name:"Project and Remarks",aoa:proj},{name:"Legend",aoa:leg}];
 }
 
 /* ---------------- NATIVE XLSX (offline, multi-sheet) ---------------- */
